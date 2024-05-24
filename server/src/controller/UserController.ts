@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+/* import { Request, Response } from "express";
 import prisma from "../utils/prisma";
 import { hash } from "bcrypt";
 
@@ -39,4 +39,4 @@ export class UserController {
             return res.status(500).json({ error: "Internal server error" });
         }
     }
-}
+} */

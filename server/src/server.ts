@@ -1,7 +1,6 @@
 import express from "express";
 import { router  } from "./routes/routes";
 import dotenv from 'dotenv';
-import bodyParser from "body-parser";
 
 dotenv.config();
 
