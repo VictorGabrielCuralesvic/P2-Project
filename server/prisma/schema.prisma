@@ -71,6 +71,14 @@ model Report {
   updatedAt DateTime  @updatedAt
 }
 
+model PasswordReset {
+  id Int @id @default(autoincrement())
+  email String
+  token String
+  createdAt DateTime @default(now())
+  expiresAt DateTime
+}
+
 enum TransactionType {
   EXPENSE
   INCOME
