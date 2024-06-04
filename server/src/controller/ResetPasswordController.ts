@@ -26,7 +26,7 @@ export class ResetPasswordController {
     }
 
     async resetPassword(req: Request, res: Response) {
-        
+
         const { token, newPassword } = req.body;
 
         if (!token || !newPassword) {
