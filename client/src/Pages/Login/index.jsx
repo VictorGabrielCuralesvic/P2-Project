@@ -36,9 +36,9 @@ const LoginScreen = () => {
                     <button onClick={handleLogin} className="button">Entrar</button>
                     <p className="noAccount">
                         <span className="noAccountText">Não tem uma conta? </span>
-                        <span className="signUp">
+                        <a href='/client/src/Pages/Register/index.jsx' className="signUp">
                             Sign Up
-                        </span>
+                        </a>
                     </p>
                 </div>
             </div>
