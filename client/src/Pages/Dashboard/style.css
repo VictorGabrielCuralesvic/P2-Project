@@ -1,0 +1,61 @@
+.container {
+    position: relative;
+    background-color: #00d09e;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    height: 100vh;
+    width: 100%;
+}
+
+.title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #093030;
+}
+
+.topproducts {
+    background-color: #F1FFF3;
+    border-radius: 10%;
+    padding: 20px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+    margin-bottom: 20px;
+}
+
+.toptitle {
+    font-size: 20px;
+    margin-bottom: 20px;
+    color: #093030;
+}
+
+.products {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.product {
+    background-color: #DFF7E2;
+    border-radius: 10%;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+    width: 45%;
+}
+
+.sales {
+    color: #3299FF;
+    font-size: 14px;
+}
+
+.buttonL {
+    width: 200px;
+    height: 50px;
+    border-radius: 25px;
+    margin-bottom: 60px; /* Add margin to prevent overlap with bottom navigation */
+}
