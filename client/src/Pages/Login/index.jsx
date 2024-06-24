@@ -1,11 +1,14 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './style.css';
 
 const LoginScreen = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
     const handleLogin = () => {
+        navigate('/Dashboard');
         // Lógica de autenticação
         console.log('Login efetuado com:', email, password);
     };

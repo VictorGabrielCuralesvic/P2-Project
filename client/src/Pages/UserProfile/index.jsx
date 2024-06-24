@@ -1,6 +1,6 @@
 import React from 'react';
 import './style.css';
-import BottomNavigation from '../../Components/BottomNavigation';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 const UserProfile = () => {
     return (
