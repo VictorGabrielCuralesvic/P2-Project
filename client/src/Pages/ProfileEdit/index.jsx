@@ -2,7 +2,7 @@ import React from 'react';
 import { FaArrowLeft} from 'react-icons/fa';
 import BottomNavigation from '../../Components/BottomNavigation';
 import LogoPC from '../../Assets/LogoPC.png'; // Certifique-se de que o caminho para a logo está correto
-import './style.css';
+import '../../Components/Style.css';
 
 const ProfileEdit = () => {
   return (

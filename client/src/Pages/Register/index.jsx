@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import './style.css';
+import '../../Components/Style.css';
 
 const RegisterScreen = () => {
     const [fullName, setFullName] = useState('');

@@ -1,6 +1,6 @@
 import React from 'react';
-import BottomNavigation from './BottomNavigation';
-import '.style.css';
+import BottomNavigation from '../../Components/BottomNavigation';
+import '../../Components/Style.css';
 
 const Dashboard = () => {
   return (
