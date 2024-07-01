@@ -2,10 +2,13 @@ import  { Router } from "express";
 /* import { UserController } from "../controller/UserController"; */
 import { AuthController } from "../controller/AuthController";
 import { ResetPasswordController } from "../controller/ResetPasswordController";
+import { TransactionController } from "../controller/TransactionController";
+import { authMiddleware } from "../middleware/authMiddleware";
 
 /* const userController = new UserController(); */
 const authController = new AuthController();
 const resetPasswordController = new ResetPasswordController();
+const transactionController = new TransactionController();
 export const router = Router();
 
 // User routes
@@ -20,3 +23,7 @@ router.get("/validate-token", authController.validateToken);
 // Reset Passwords routes
 router.post("/request-password-reset", resetPasswordController.requestPasswordReset);
 router.post("/reset-password", resetPasswordController.resetPassword);
+
+// Transaction routes
+router.post("/transactions", authMiddleware, transactionController.create);
+router.get("/transactions", authMiddleware, transactionController.list);
