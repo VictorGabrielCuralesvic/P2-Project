@@ -44,8 +44,11 @@ model PriceCalculation {
   userId        Int
   productName   String
   ingredientCosts Float
-  otherCosts    Float
+  laborCosts    Float     @default(0.0)
+  packagingCosts Float?
+  indirectCosts Float     @default(0.0)
   margin        Float
+  totalCost     Float     @default(0.0)
   suggestedPrice Float
   manualPrice   Float?
   createdAt     DateTime  @default(now())
