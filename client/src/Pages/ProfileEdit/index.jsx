@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaArrowLeft} from 'react-icons/fa';
-import BottomNavigation from '../../Components/BottomNavigation';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import LogoPC from '../../Assets/LogoPC.png'; // Certifique-se de que o caminho para a logo está correto
 import '../../Components/Style.css';
 
