@@ -2,6 +2,7 @@ import React from 'react';
 import '../../Components/Style.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
+
 const UserProfile = () => {
     return (
         <div className="user-profile">

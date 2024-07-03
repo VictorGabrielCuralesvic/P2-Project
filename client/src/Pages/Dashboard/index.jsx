@@ -1,7 +1,8 @@
 import React from 'react';
-import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
+
 import '../../Components/Style.css';
 import { useNavigate } from 'react-router-dom';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 
 const Dashboard = () => {
