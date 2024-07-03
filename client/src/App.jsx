@@ -6,7 +6,7 @@ import ResetPasswordScreen from './Pages/ResetPass';
 import ProfileEdit from './Pages/ProfileEdit';
 import UserProfile from './Pages/UserProfile';
 import Dashboard from './Pages/Dashboard';
-import BillsRegister from './Pages/RegisterBills';
+import RegisterBills from './Pages/RegisterBills';
 import PricingDashboard from './Pages/PriceCalc';
 import PricingInfo from './Pages/PriceCalc/calc';
 
@@ -20,7 +20,7 @@ const App = () => {
         <Route path="/ResetPassword" element={<ResetPasswordScreen/>} />
         <Route path="/ProfileEdit" element={<ProfileEdit/>} />
         <Route path="/UserProfile" element={<UserProfile/>} />
-        <Route path="/BillsRegister" element={<BillsRegister/>} />
+        <Route path="/RegisterBills" element={<RegisterBills/>} />
         <Route path="/PricingDashboard" element={<PricingDashboard/>} />
         <Route path="/PricingInfo" element={<PricingInfo/>} />
       </Routes>

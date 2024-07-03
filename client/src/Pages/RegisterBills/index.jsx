@@ -2,7 +2,7 @@ import React from "react";
 import '../../Components/Style.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
-const BillsRegister = () =>{
+const RegisterBills = () =>{
     return (
         <div className="container">
             <div className="container-two">
@@ -35,4 +35,4 @@ const BillsRegister = () =>{
     );
 };
 
-export default BillsRegister;
+export default RegisterBills;
