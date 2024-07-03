@@ -1,5 +1,5 @@
 import React from "react";
-import './style.css';
+import '../../Components/Style.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 const BillsRegister = () =>{

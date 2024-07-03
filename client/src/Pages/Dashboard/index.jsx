@@ -1,5 +1,5 @@
 import React from 'react';
-import BottomNavigation from '../../Components/BottomNavigation';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import '../../Components/Style.css';
 import { useNavigate } from 'react-router-dom';
 

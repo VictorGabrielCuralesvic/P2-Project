@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import "../../Components/Style.css"
 
 
 const ResetPasswordScreen = () => {
