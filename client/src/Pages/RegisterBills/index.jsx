@@ -3,7 +3,7 @@ import './style.css';
 import {useNavigate} from 'react-router-dom';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
-const BillsRegister = () =>{
+const RegisterBills = () =>{
     const navigate = useNavigate();
     const handleVendas =  () => {
         navigate('/vendas');
@@ -40,4 +40,4 @@ const BillsRegister = () =>{
     );
 };
 
-export default BillsRegister;
+export default RegisterBills;
