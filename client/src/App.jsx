@@ -7,6 +7,7 @@ import ProfileEdit from './Pages/ProfileEdit';
 import UserProfile from './Pages/UserProfile';
 import Dashboard from './Pages/Dashboard';
 import BillsRegister from './Pages/RegisterBills';
+import Vendas from './Pages/RegisterBills/vendas';
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
         <Route path="/ProfileEdit" element={<ProfileEdit/>} />
         <Route path="/UserProfile" element={<UserProfile/>} />
         <Route path="/BillsRegister" element={<BillsRegister/>} />
+        <Route path="/vendas" element={<Vendas />} />
       </Routes>
     </Router>
   );

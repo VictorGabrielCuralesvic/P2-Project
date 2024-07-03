@@ -1,8 +1,13 @@
 import React from "react";
 import './style.css';
+import {useNavigate} from 'react-router-dom';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 const BillsRegister = () =>{
+    const navigate = useNavigate();
+    const handleVendas =  () => {
+        navigate('/vendas');
+    }
     return (
         <div className="container">
             <div className="container-two">
@@ -20,7 +25,7 @@ const BillsRegister = () =>{
                 <div className="buttons">
                     <button className="note-expenses">Anotar Despesas</button>
                     <button className="ps">Produtos Vendidos</button>
-                    <button className="sells">Vendas</button>
+                    <button className="sells" onClick={handleVendas}>Vendas</button>
                 </div>
                 <div className="chart-container">
                     <h2 className="chart-title">Última Semana</h2>
