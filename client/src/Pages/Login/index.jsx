@@ -1,16 +1,29 @@
 import { useState } from 'react';
 import '../../Components/Style.css';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginScreen = () => {
     const navigate = useNavigate();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
 
-    const handleLogin = () => {
-        navigate('/Dashboard');
-        // Lógica de autenticação
-        console.log('Login efetuado com:', email, password);
+    const handleLogin = async () => {
+
+        try {
+            const re = await axios.post('http://localhost:3000/login', { email, password });
+
+            const { token } = re.data;
+
+            //local storage
+            localStorage.setItem('token', token);
+            
+            //navigate to main page
+            navigate('/Dashboard');
+        } catch (error) {
+            setError('E-mail ou senha inválida');
+        }
     };
 
     return (
