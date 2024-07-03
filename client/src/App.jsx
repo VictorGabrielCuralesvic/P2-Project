@@ -8,6 +8,7 @@ import UserProfile from './Pages/UserProfile';
 import Dashboard from './Pages/Dashboard';
 import BillsRegister from './Pages/RegisterBills';
 import PricingDashboard from './Pages/PriceCalc';
+import PricingInfo from './Pages/PriceCalc/calc';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/UserProfile" element={<UserProfile/>} />
         <Route path="/BillsRegister" element={<BillsRegister/>} />
         <Route path="/PricingDashboard" element={<PricingDashboard/>} />
+        <Route path="/PricingInfo" element={<PricingInfo/>} />
       </Routes>
     </Router>
   );
