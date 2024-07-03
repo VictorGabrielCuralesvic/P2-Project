@@ -1,12 +1,12 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginScreen from './Pages/Login';
-import RegisterScreen from './Pages/Register';
-import ResetPasswordScreen from './Pages/ResetPass';
-import ProfileEdit from './Pages/ProfileEdit';
-import UserProfile from './Pages/UserProfile';
-import Dashboard from './Pages/Dashboard';
-import BillsRegister from './Pages/RegisterBills';
+import LoginScreen from './Pages/Login/LoginScreen';
+import RegisterScreen from './Pages/Register/RegisterScreen';
+import ResetPasswordScreen from './Pages/ResetPass/ResetPasswordScreen';
+import ProfileEdit from './Pages/ProfileEdit/ProfileEdit';
+import UserProfile from './Pages/UserProfile/UserProfile';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import BillsRegister from './Pages/RegisterBills/BillsRegister';
 
 const App = () => {
   return (
