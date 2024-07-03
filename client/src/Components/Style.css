@@ -1,4 +1,4 @@
-/*Dashboard*/
+/*Dashboard
 .container {
     position: relative;
     background-color: #00d09e;
@@ -58,10 +58,10 @@
     width: 200px;
     height: 50px;
     border-radius: 25px;
-    margin-bottom: 60px; /* Add margin to prevent overlap with bottom navigation */
+    margin-bottom: 60px; /* Add margin to prevent overlap with bottom navigation 
 }
 
-/*Login*/
+/*Login
 * {
     background-color: #00d09e;
     font-family: "Poppins-SemiBold", Helvetica;
@@ -157,7 +157,7 @@
     color: #3299FF;
     cursor: pointer;
   }
-/*ProfileEdit*/
+/*ProfileEdit
 .profile-edit-container {
     display: flex;
     flex-direction: column;
@@ -248,7 +248,7 @@
     background-color: #00a684;
   }
   
-/*Register*/
+/*Register
 * {
     background-color: #00d09e;
     font-family: "Poppins-SemiBold", Helvetica;
@@ -339,8 +339,8 @@
 .terms a:hover {
     text-decoration: underline;
 }
-/*ResetPass*/
-/*UserProfile*/
+/*ResetPass
+/*UserProfile
 .user-profile {
     font-family: Arial, sans-serif;
     background-color: #E5FAEE;
@@ -401,3 +401,4 @@
     color: #000;
     font-size: 16px;
 }
+*/

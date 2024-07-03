@@ -1,6 +1,7 @@
 import { useState } from 'react';
-import '../../Components/Style.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate,Link } from 'react-router-dom';
+import LogoPC from '../../Assets/LogoPC.png'
+import './LoginScreen.css'
 
 const LoginScreen = () => {
     const navigate = useNavigate();
@@ -14,35 +15,41 @@ const LoginScreen = () => {
     };
 
     return (
-        <div className="container">
-            <h1 className="title">Preço Certo</h1>
-            <div className='containertwo'>
-                <div className="form">
-                    <h2 className="welcome">Bem-vindo!</h2>
-                    <label className="label">E-mail</label>
-                    <input
-                        type="email"
-                        className="input"
-                        placeholder="exemplo@exemplo.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label className="label">Senha</label>
-                    <input
-                        type="password"
-                        className="input"
-                        placeholder="●●●●●●●●"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <a href="/client/src/Pages/ResetPass/index.jsx" className="forgotPassword">Esqueceu a senha?</a>
-                    <button onClick={handleLogin} className="button">Entrar</button>
-                    <p className="noAccount">
-                        <span className="noAccountText">Não tem uma conta? </span>
-                        <a href="/client/src/Pages/Register/index.jsx" className="signUp">
-                            Sign Up
-                        </a>
-                    </p>
+        <div className='t1'>
+            <div className='t1-header'>
+                <img src={LogoPC} alt="Preço Certo"/>
+                <h1 className='t1-name'>Preço Certo</h1>
+            </div>
+            <div className='t1-bottom'>
+                <div className='t1-body'>
+                    <h1 className='t1-title'>Bem-vindo!</h1>
+                    <div className='t1-form'>
+                        <label className='t1-label'>E-mail</label>
+                        <input
+                            type="email"
+                            placeholder="exemplo@exemplo.com"
+                            value={email}
+                            className='t1-input'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label className='t1-label'>Senha</label>
+                        <input
+                            type="password"
+                            placeholder="●●●●●●●●"
+                            value={password}
+                            className='t1-input'
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className='t1-box-button'>
+                        <div>
+                            <button onClick={handleLogin} className='t1-button'>Entrar</button>
+                        </div>
+                        <div className='t1-box-a'>
+                            <Link to="/ResetPassword" className='t1-link'>Esqueceu a senha?</Link>
+                            <Link to="/Register" className='t1-link'>Novo usuário?</Link>                          
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
