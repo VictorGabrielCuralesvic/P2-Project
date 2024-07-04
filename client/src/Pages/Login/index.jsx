@@ -12,7 +12,7 @@ const LoginScreen = () => {
     const handleLogin = async () => {
 
         try {
-            const re = await axios.post('http://localhost:3000/login', { email, password });
+            const re = await axios.post('http://localhost:5000/login', { email, password });
 
             const { token } = re.data;
 
