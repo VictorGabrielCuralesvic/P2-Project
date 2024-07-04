@@ -1,9 +1,9 @@
 import {useState} from "react";
-import './style.css';
+import '../../Components/Style.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 const Vendas = () =>{
-    const [products, setProducts] = useState('');
+    const [products, setProducts] = useState([]);
 
     const handleIncrease = (index) => {
         const newProducts = [...products];
