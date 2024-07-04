@@ -3,12 +3,16 @@ import  { Router } from "express";
 import { AuthController } from "../controller/AuthController";
 import { ResetPasswordController } from "../controller/ResetPasswordController";
 import { TransactionController } from "../controller/TransactionController";
+import { PriceCalculation } from "@prisma/client";
 import { authMiddleware } from "../middleware/authMiddleware";
+import { PriceController } from "../controller/PriceController";
+
 
 /* const userController = new UserController(); */
 const authController = new AuthController();
 const resetPasswordController = new ResetPasswordController();
 const transactionController = new TransactionController();
+const priceCalculationController = new PriceController();
 export const router = Router();
 
 // User routes
@@ -27,3 +31,6 @@ router.post("/reset-password", resetPasswordController.resetPassword);
 // Transaction routes
 router.post("/transactions", authMiddleware, transactionController.create);
 router.get("/transactions", authMiddleware, transactionController.list);
+
+// price calculation route
+router.post("/calculate-price", authMiddleware, priceCalculationController.calculatePrice);
