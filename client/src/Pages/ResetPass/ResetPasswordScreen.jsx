@@ -1,5 +1,7 @@
 import { useState } from 'react';
-
+import './ResetPasswordScreen.css'
+import LogoPC from '../../Assets/LogoPC.png'
+import { Link } from 'react-router-dom';
 
 const ResetPasswordScreen = () => {
     const [email, setEmail] = useState('');
@@ -22,46 +24,54 @@ const ResetPasswordScreen = () => {
     };
 
     return (
-        <div className="container">
-            <h1 className="title">Preço Certo</h1>
-            <div className='containertwo'>
-                <div className="form">
-                    <h2 className="welcome">Redefinir Senha</h2>
-                    <label className="label">E-mail</label>
-                    <input
-                        type="email"
-                        className="input"
-                        placeholder="exemplo@exemplo.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <button onClick={handleRequestReset} className="button">Solicitar Redefinição</button>
-                    
-                    <label className="label">Token</label>
-                    <input
-                        type="text"
-                        className="input"
-                        placeholder="Token recebido por e-mail"
-                        value={token}
-                        onChange={(e) => setToken(e.target.value)}
-                    />
-                    <label className="label">Nova Senha</label>
-                    <input
-                        type="password"
-                        className="input"
-                        placeholder="●●●●●●●●"
-                        value={newPassword}
-                        onChange={(e) => setNewPassword(e.target.value)}
-                    />
-                    <label className="label">Confirmar Senha</label>
-                    <input
-                        type="password"
-                        className="input"
-                        placeholder="●●●●●●●●"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                    <button onClick={handleResetPassword} className="button">Redefinir Senha</button>
+        <div className='t1-1'>
+            <div className='t1-1-header'>
+                <img src={LogoPC} alt="Preço Certo"/>
+                <h1 className='t1-1-name'>Preço Certo</h1>
+            </div>
+            
+            <div className='t1-1-bottom'>
+                <div className='t1-1-body'>
+                    <h1 className='t1-1-title'>Redefinir Senha</h1>
+                    <div className='t1-1-form'>
+                        <label className='t1-1-label'>E-mail</label>
+                        <div className='t1-1-teste'>
+                        <input
+                            type="email"
+                            className='t1-1-input'
+                            placeholder="exemplo@exemplo.com"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <button onClick={handleRequestReset} className='t1-1-button'>Solicitar Redefinição</button>
+                        </div>
+                        <label className='t1-1-label'>Token</label>
+                        <input
+                            type="text"
+                            className='t1-1-input'
+                            placeholder="Token recebido por e-mail"
+                            value={token}
+                            onChange={(e) => setToken(e.target.value)}
+                        />
+                        <label className='t1-1-label'>Nova Senha</label>
+                        <input
+                            type="password"
+                            className='t1-1-input'
+                            placeholder="●●●●●●●●"
+                            value={newPassword}
+                            onChange={(e) => setNewPassword(e.target.value)}
+                        />
+                        <label className='t1-1-label'>Confirmar Senha</label>
+                        <input
+                            type="password"
+                            className='t1-1-input'
+                            placeholder="●●●●●●●●"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                    </div>
+                    <button onClick={handleResetPassword} className='t1-1-button'>Redefinir Senha</button>
+                    <Link to="/" className='t1-1-link'>Voltar para o login?</Link>                          
                 </div>
             </div>
         </div>
