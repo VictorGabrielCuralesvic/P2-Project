@@ -1,5 +1,8 @@
 import { useState } from 'react';
 import '../../Components/Style.css';
+import './RegisterScreen.css'
+import LogoPC from '../../Assets/LogoPC.png'
+import { Link } from 'react-router-dom';
 
 const RegisterScreen = () => {
     const [fullName, setFullName] = useState('');
@@ -19,62 +22,75 @@ const RegisterScreen = () => {
     };
 
     return (
-        <div className="container">
-            <h1 className="title">Preço Certo</h1>
-            <div className='containertwo'>
-                <div className="form">
-                    <h2 className="register">Cadastrar</h2>
-                    <label className="label">Nome Completo</label>
-                    <input
-                        type="text"
-                        className="input"
-                        placeholder="Seu nome completo"
-                        value={fullName}
-                        onChange={(e) => setFullName(e.target.value)}
-                    />
-                    <label className="label">E-mail</label>
-                    <input
-                        type="email"
-                        className="input"
-                        placeholder="exemplo@exemplo.com"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <label className="label">Número de Telefone</label>
-                    <input
-                        type="tel"
-                        className="input"
-                        placeholder="(00) 00000-0000"
-                        value={phoneNumber}
-                        onChange={(e) => setPhoneNumber(e.target.value)}
-                    />
-                    <label className="label">Data de Nascimento</label>
-                    <input
-                        type="date"
-                        className="input"
-                        value={birthDate}
-                        onChange={(e) => setBirthDate(e.target.value)}
-                    />
-                    <label className="label">Senha</label>
-                    <input
-                        type="password"
-                        className="input"
-                        placeholder="●●●●●●●●"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <label className="label">Confirme a Senha</label>
-                    <input
-                        type="password"
-                        className="input"
-                        placeholder="●●●●●●●●"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                    />
-                    <button onClick={handleRegister} className="button">Cadastrar</button>
-                    <p className="terms">
-                        Se cadastrando, você concorda com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.
-                    </p>
+        <div className='t2'>
+            <div className='t2-header'>
+                <img src={LogoPC} alt="Preço Certo"/>
+                <h1 className='t2-name'>Preço Certo</h1>
+            </div>
+            <div className='t2-bottom'>
+                <div className='t2-body'>
+                    <h1 className='t2-title'>Cadastrar</h1>
+                    <div className='t2-form'>
+                        <label className='t2-label'>Nome Completo</label>
+                        <input
+                            type="text"
+                            placeholder="Seu nome completo"
+                            value={fullName}
+                            className='t2-input'
+                            onChange={(e) => setFullName(e.target.value)}
+                        />
+                        <label className='t2-label'>E-mail</label>
+                        <input
+                            type="email"
+                            placeholder="exemplo@exemplo.com"
+                            value={email}
+                            className='t2-input'
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <label className='t2-label'>Número de Telefone</label>
+                        <input
+                            type="tel"
+                            placeholder="(00) 00000-0000"
+                            value={phoneNumber}
+                            className='t2-input'
+                            onChange={(e) => setPhoneNumber(e.target.value)}
+                        />
+                        <label className='t2-label'>Data de Nascimento</label>
+                        <input
+                            type="date"
+                            value={birthDate}
+                            className='t2-input'
+                            onChange={(e) => setBirthDate(e.target.value)}
+                        />
+                        <label className='t2-label'>Senha</label>
+                        <input
+                            type="password"
+                            placeholder="●●●●●●●●"
+                            value={password}
+                            className='t2-input'
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <label className='t2-label'>Confirme a Senha</label>
+                        <input
+                            type="password"
+                            placeholder="●●●●●●●●"
+                            value={confirmPassword}
+                            className='t2-input'
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                        />
+                    </div>
+                    <div className='t2-box-button'>
+                        <div className='t2-buttons'>
+                            <button onClick={handleRegister} className='t2-button'>Cadastrar</button>
+                            <Link to="/" className='t2-link'>já possui uma conta?</Link>
+                        </div>
+                        <div className='t2-box-a'>
+                            <p>
+                                Se cadastrando, você concorda com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.
+                            </p>
+                            
+                        </div> 
+                    </div>
                 </div>
             </div>
         </div>

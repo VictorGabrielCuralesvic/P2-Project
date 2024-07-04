@@ -1,19 +1,18 @@
-/*LoginScreen = t1*/
+/*Tela Cadastro - t2*/
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.t1 {
+.t2 {
     background-color: #00d09e;
     font-family: "Poppins-SemiBold", Helvetica;
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
 }
 
-.t1-header {
+.t2-name {
+    margin-left: 20px;
+}
+
+.t2-header {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -21,29 +20,27 @@
     padding-bottom: 50px;
 }
 
-.t1-name {
-    margin-left: 20px;
-}
-
-.t1-bottom {
+.t2-bottom {
     background-color: #f1fff3;
-    height: 100vh;
+    min-height: 100vh;
     border-radius: 70px 70px 0px 0px;
     padding: 20px;
+    overflow-y: auto;
 }
 
-.t1-title {
-    padding-bottom: 50px;
-}
-
-.t1-body {
+.t2-body {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    flex-grow: 1;
 }
 
-.t1-form {
+.t2-title {
+    padding-bottom: 50px;
+}
+
+.t2-form {
     display: flex;
     padding-bottom: 30px;
     flex-direction: column;
@@ -51,48 +48,41 @@
     width: 100%; 
 }
 
-.t1-label {
+.t2-label {
     padding-top: 30px;
     padding-bottom: 10px;
     padding-left: 10px;
     font-weight: bold;
 }
 
-.t1-input {
+.t2-input {
     width: 100%;
     border-radius: 20px;
     border: 0;
     height: 40px;
     box-shadow: inset 11px 10px 10px rgba(0, 0, 0, 0.1);
     padding-left: 20px;
+    padding-right: 20px;
     background-color: #dff7e2;
 }
 
-.t1-box-button {
+.t2-box-button {
     display: flex;
     flex-direction: row-reverse;
     width: 100%;
     justify-content: space-between;
-    align-items: center;
+    padding-bottom: 50px;
+    align-items: flex-start;
 }
 
-.t1-box-a {
+.t2-buttons {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    padding-left: 10px;
 }
 
-.t1-link {
-    font-weight: bold;
-    font-size: 18px;
-    color: black;
-    text-decoration: none;
-}
-
-.t1-link:hover {
-    color:#00D09E;
-}
-
-.t1-button {
+.t2-button {
     background-color: #00D09E;
     font-size:20px;
     font-weight: bold;
@@ -102,38 +92,54 @@
     box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
 }
 
-.t1-button:hover {
-    cursor: pointer;
+.t2-box-a {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 20px;
+}
+
+.t2-link {
+    font-weight: bold;
+    font-size: 18px;
+    color: black;
+    text-decoration: none;
+    text-align: center;
+}
+
+.t2-link:hover {
+    color:#00D09E;
 }
 
 @media (min-width: 768px) {
-    .t1 {
+    .t2 {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        min-height: 100vh;
     }
-    .t1-bottom {
+    .t2-bottom {
         width: 400px;
         background-color: #f1fff3;
         border-radius: 0px 0px 0px 0px;
         display: flex;
         justify-content: center;
+        min-height: 100vh;
     }
-    .t1-header {
+    .t2-header {
         padding: 0 0 0 50px;
         display: flex;
     }
-    .t1-body {
+    .t2-body {
         display: flex;
         padding-inline: 20px;
         justify-content: center;
         flex-direction: column;
         align-items: center;
+        flex-grow: 1;
     }
-    .t1-link {
+    .t2-link {
         font-weight: bold;
         font-size: 14px;
-        padding-right: 20px;
         color: black;
         text-decoration: none;
     }
