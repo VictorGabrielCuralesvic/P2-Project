@@ -9,6 +9,7 @@ import Dashboard from './Pages/Dashboard';
 import RegisterBills from './Pages/RegisterBills';
 import PricingDashboard from './Pages/PriceCalc';
 import PricingInfo from './Pages/PriceCalc/calc';
+import Vendas from './Pages/RegisterBills/vendas';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/RegisterBills" element={<RegisterBills/>} />
         <Route path="/PricingDashboard" element={<PricingDashboard/>} />
         <Route path="/PricingInfo" element={<PricingInfo/>} />
+        <Route path="/vendas" element={<Vendas />} />
       </Routes>
     </Router>
   );
