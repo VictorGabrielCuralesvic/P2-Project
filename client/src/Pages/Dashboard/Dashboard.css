@@ -1,0 +1,93 @@
+/*Dashboard = t3*/
+
+.t3 {
+    background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.t3-header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.t3-header img {
+    width: 50px;
+    height: auto; /* Mantém a proporção da imagem */
+}
+
+.t3-bottom {
+    background-color: #f1fff3;
+    height: 100vh;
+    border-radius: 70px 70px 0px 0px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.t3-title {
+    padding-bottom: 50px;
+}
+
+.t3-resume {
+    background-color: #dff7e2;
+    width: 100%;
+    padding: 20px;
+    border-radius: 50px;
+    margin-bottom: 50px;
+}
+
+.t3-resume-body {
+    display: flex;
+    padding-top: 20px;
+    justify-content: space-around;
+}
+
+.t3-product{
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.t3-sales{
+    color: #0068FF;
+    font-size: 20px;
+}
+
+.t3-button {
+    background-color: #00D09E;
+    font-size:20px;
+    font-weight: bold;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.t3-button:hover {
+    cursor: pointer;
+}
+
+.t3-box-button {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+@media (min-width: 768px) {
+    .t3-box-button {
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 50%;
+        align-items: flex-start;
+    }
+}
