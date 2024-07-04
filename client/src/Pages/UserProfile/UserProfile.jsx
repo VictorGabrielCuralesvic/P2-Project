@@ -1,5 +1,5 @@
 import React from 'react';
-import '../../Components/Style.css';
+import './UserProfile.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 

@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import '../../Components/Style.css';
 import './RegisterScreen.css'
 import LogoPC from '../../Assets/LogoPC.png'
 import { Link } from 'react-router-dom';

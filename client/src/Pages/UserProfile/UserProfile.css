@@ -1,0 +1,62 @@
+/*UserProfile = t5*/
+
+.user-profile {
+    font-family: Arial, sans-serif;
+    background-color: #E5FAEE;
+    padding: 20px;
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #00D38C;
+    padding: 10px;
+    border-radius: 10px 10px 0 0;
+}
+
+.header h1 {
+    color: white;
+    font-size: 24px;
+}
+
+.header-icon img {
+    height: 24px;
+    width: 24px;
+}
+
+.user-info {
+    margin: 20px 0;
+}
+
+.user-info h2 {
+    color: #000;
+    font-size: 20px;
+}
+
+.menu {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu-item {
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.menu-icon img {
+    height: 24px;
+    width: 24px;
+    margin-right: 10px;
+}
+
+.menu-item span {
+    color: #000;
+    font-size: 16px;
+}
