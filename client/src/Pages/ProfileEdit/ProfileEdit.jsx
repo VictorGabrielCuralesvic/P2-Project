@@ -1,15 +1,18 @@
 import React from 'react';
 import { FaArrowLeft} from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import LogoPC from '../../Assets/LogoPC.png';
 import './ProfileEdit.css';
 
 const ProfileEdit = () => {
+  const navigate = useNavigate();
+
   return (
     <div className='t6'>
       <div className='t6-header'>
         <div className='t6-header-icon'>
-          <FaArrowLeft/>
+        <FaArrowLeft onClick={() => navigate('/Dashboard')} />
         </div>
         <div className='t6-header-name'>
           <h1>Preço Certo</h1>
