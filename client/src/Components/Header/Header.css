@@ -1,0 +1,35 @@
+.header {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 20px;
+  }
+  
+  .header img {
+    width: 50px;
+    height: auto; /* Mantém a proporção da imagem */
+  }
+  
+  .header-icon {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  
+  .header-name {
+    text-align: center;
+    width: 30%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .header-name h1{
+    color:black;
+  }
+  
+  .header-logo {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
+  }

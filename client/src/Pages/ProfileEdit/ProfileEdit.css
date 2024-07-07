@@ -7,38 +7,6 @@
   flex-direction: column;
 }
 
-.t6-header {
-  height: 70px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding-inline: 20px;
-}
-
-.t6-header img {
-  width: 50px;
-  height: auto; /* Mantém a proporção da imagem */
-}
-
-.t6-header-icon {
-  width: 30%;
-  display: flex;
-  justify-content: flex-start;
-}
-
-.t6-header-name {
-  text-align: center;
-  width: 30%;
-  display: flex;
-  justify-content: center;
-}
-
-.t6-header-logo {
-  width: 30%;
-  display: flex;
-  justify-content: flex-end;
-}
-
 .t6-bottom {
   background-color: #f1fff3;
   min-height: 100vh;
