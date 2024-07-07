@@ -1,38 +1,55 @@
 import React from 'react';
 import { FaArrowLeft} from 'react-icons/fa';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
-import LogoPC from '../../Assets/LogoPC.png'; // Certifique-se de que o caminho para a logo está correto
+import LogoPC from '../../Assets/LogoPC.png';
 import './ProfileEdit.css';
 
 const ProfileEdit = () => {
   return (
-    <div className="profile-edit-container">
-      <header className="header">
-        <FaArrowLeft className="icon" />
-        <div className="title-container">
-          <h1 className="title">Preço Certo</h1>
+    <div className='t6'>
+      <div className='t6-header'>
+        <div className='t6-header-icon'>
+          <FaArrowLeft/>
         </div>
-        <img src={LogoPC} alt="Logo" className="logo" />
-      </header>
-      <main className="main-content">
-        <h2 className="username">Nome De Usuário</h2>
-        <h3 className="edit-title">Editar Conta:</h3>
-        <form className="edit-form">
-          <label>
-            Nome Completo
-            <input type="text" placeholder="João Silva" />
-          </label>
-          <label>
-            Número
-            <input type="text" placeholder="(81) 9XXXX-XXXX" />
-          </label>
-          <label>
-            E-Mail
-            <input type="email" placeholder="exemplo@exemplo.com" />
-          </label>
-          <button type="submit" className="update-button">Atualizar Conta</button>
-        </form>
-      </main>
+        <div className='t6-header-name'>
+          <h1>Preço Certo</h1>
+        </div>
+        <div className='t6-header-logo'>
+          <img src={LogoPC} alt="Logo"/>
+        </div>
+      </div>
+      <div className='t6-bottom'>
+        <h1 className='t6-title'>Nome De Usuário</h1>
+        <div>
+          <h2>Editar Conta:</h2>
+          <div  className='t6-form'>
+            <label className='t6-label'>Nome Completo</label>
+            <input
+                type="text"
+                placeholder="Seu Nome Completo"
+                value={'none'}
+                className='t6-input'
+            />
+            <label className='t6-label'>Número</label>
+            <input
+                type="text"
+                placeholder="(XX) XXXXX-XXXX"
+                value={'none'}
+                className='t6-input'
+            />
+            <label className='t6-label'>E-Mail</label>
+            <input
+                type="text"
+                placeholder="seuemail@email.com"
+                value={'none'}
+                className='t6-input'
+            />
+            <div className='t6-button-box'>
+              < button type="submit" className='t6-button'>Atualizar Conta</button>          
+            </div>
+          </div>
+        </div>
+      </div>
       <BottomNavigation />
     </div>
   );

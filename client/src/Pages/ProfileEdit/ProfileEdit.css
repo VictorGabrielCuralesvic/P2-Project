@@ -1,91 +1,125 @@
 /*ProfileEdit = t6*/
 
-.profile-edit-container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
-    background-color: #e8f5e9;
+.t6 {
+  background-color: #00d09e;
+  font-family: "Poppins-SemiBold", Helvetica;
+  display: flex;
+  flex-direction: column;
+}
+
+.t6-header {
+  height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 20px;
+}
+
+.t6-header img {
+  width: 50px;
+  height: auto; /* Mantém a proporção da imagem */
+}
+
+.t6-header-icon {
+  width: 30%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.t6-header-name {
+  text-align: center;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+
+.t6-header-logo {
+  width: 30%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.t6-bottom {
+  background-color: #f1fff3;
+  min-height: 100vh;
+  border-radius: 70px 70px 0px 0px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.t6-title {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.t6-form {
+  display: flex;
+  padding-bottom: 30px;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%; 
+}
+
+.t6-label {
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.t6-input {
+  width: 100%;
+  border-radius: 20px;
+  border: 0;
+  height: 40px;
+  box-shadow: inset 11px 10px 10px rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #dff7e2;
+}
+
+.t6-button {
+  background-color: #00D09E;
+  font-size:20px;
+  font-weight: bold;
+  padding: 10px 40px 10px 40px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+  margin-top: 50px;
+}
+
+.t6-button-box {
+  width: 100%;
+  display: flex;
+  justify-content: center ;
+}
+
+@media (min-width: 768px) {
+  .t6-form {
+      width: 50%;
   }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #00c896;
-    padding: 10px 20px;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-  }
-  
-  .icon {
-    color: #fff;
-    font-size: 24px;
-  }
-  
-  .title-container {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    width: 30px;
-    height: 30px;
-    margin-right: 10px;
-  }
-  
-  .title {
-    color: #fff;
-    font-size: 24px;
-    margin: 0;
-  }
-  
-  .main-content {
-    background-color: white;
-    flex: 1;
-    padding: 20px;
-  }
-  
-  .username {
-    background-color: white;
-    font-size: 24px;
-    text-align: center;
-    margin-bottom: 10px;
-  }
-  
-  .edit-title {
-    background-color: white;
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-  
-  .edit-form {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .edit-form label {
-    margin-bottom: 10px;
-  }
-  
-  .edit-form input {
+  .t6-button-box {
     width: 100%;
-    padding: 10px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f0f0f0;
+    display: flex;
+    justify-content: flex-start ;
+  }
+  .t6-header-icon {
+    width: 30%;
+    display: flex;
+    justify-content: flex-start;
   }
   
-  .update-button {
-    padding: 10px;
-    background-color: #00c896;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+  .t6-header-name {
+    width: 30%;
+    display: flex;
+    justify-content: center;
   }
   
-  .update-button:hover {
-    background-color: #00a684;
+  .t6-header-logo {
+    width: 30%;
+    display: flex;
+    justify-content: flex-end;
   }
+}

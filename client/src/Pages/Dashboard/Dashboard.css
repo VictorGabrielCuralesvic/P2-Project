@@ -49,6 +49,7 @@
 
 .t3-product{
     font-size: 30px;
+    font-weight: 600;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
