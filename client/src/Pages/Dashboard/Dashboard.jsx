@@ -1,8 +1,8 @@
 import React from 'react';
 import './Dashboard.css';
-import LogoPC from '../../Assets/LogoPC.png'
 import { useNavigate } from 'react-router-dom';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
+import Header from '../../Components/Header/Header';
 
 
 const Dashboard = () => {
@@ -13,10 +13,7 @@ const Dashboard = () => {
 };
   return (
     <div className='t3'>
-      <div className='t3-header'>
-        <h1 >Preço Certo</h1>
-        <img src={LogoPC} alt="Preço Certo"/>
-      </div>
+      <Header showIcon={false} />
       <div className='t3-bottom'>
         <h1 className='t3-title'>Top Produtos</h1>
         <div className='t3-resume'>

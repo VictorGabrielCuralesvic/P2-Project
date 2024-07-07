@@ -7,18 +7,6 @@
     flex-direction: column;
 }
 
-.t3-header {
-    height: 70px;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-}
-
-.t3-header img {
-    width: 50px;
-    height: auto; /* Mantém a proporção da imagem */
-}
-
 .t3-bottom {
     background-color: #f1fff3;
     height: 100vh;
