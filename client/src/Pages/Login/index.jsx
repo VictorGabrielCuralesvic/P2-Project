@@ -48,11 +48,11 @@ const LoginScreen = () => {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    <a href="/client/src/Pages/ResetPass/index.jsx" className="forgotPassword">Esqueceu a senha?</a>
+                    <a href="/ResetPassword" className="forgotPassword">Esqueceu a senha?</a>
                     <button onClick={handleLogin} className="button">Entrar</button>
                     <p className="noAccount">
                         <span className="noAccountText">Não tem uma conta? </span>
-                        <a href="/client/src/Pages/Register/index.jsx" className="signUp">
+                        <a href="Register" className="signUp">
                             Sign Up
                         </a>
                     </p>
