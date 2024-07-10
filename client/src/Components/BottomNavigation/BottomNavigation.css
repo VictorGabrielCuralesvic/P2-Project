@@ -4,7 +4,7 @@
     align-items: center;
     background-color: #e8f5e9;
     padding: 10px;
-    border-radius: 15px 15px 0 0;
+    border-radius: 70px 70px 0 0;
     box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
     position: fixed;
     bottom: 0;
@@ -19,11 +19,9 @@
     color: #000;
     font-size: 24px;
   }
-  
-  .nav-item.active {
-    background-color: #00c896;
-    border-radius: 50%;
-    padding: 10px;
-    color: #fff;
+
+  .nav-item:hover{
+    cursor: pointer;
+    color: #00D09E;
   }
   

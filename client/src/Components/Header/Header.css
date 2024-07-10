@@ -11,12 +11,6 @@
     height: auto; /* Mantém a proporção da imagem */
   }
   
-  .header-icon {
-    width: 30%;
-    display: flex;
-    justify-content: flex-start;
-  }
-  
   .header-name {
     text-align: center;
     width: 30%;
@@ -32,4 +26,8 @@
     width: 30%;
     display: flex;
     justify-content: flex-end;
+  }
+
+  .teste{
+    width: 30%;
   }

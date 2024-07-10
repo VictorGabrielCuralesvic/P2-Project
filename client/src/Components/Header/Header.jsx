@@ -1,5 +1,4 @@
 import React from 'react';
-import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import LogoPC from '../../Assets/LogoPC.png';
 import './Header.css';
@@ -9,11 +8,7 @@ const Header = ({ showIcon = false }) => {
 
   return (
     <div className='header'>
-      {showIcon && (
-      <div className='header-icon'>
-        <FaArrowLeft onClick={() => navigate('/Dashboard')} />
-      </div>
-    )}
+      <div className='teste'/>
       <div className='header-name'>
         <h1>Preço Certo</h1>
       </div>
