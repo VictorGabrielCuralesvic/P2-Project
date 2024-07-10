@@ -65,6 +65,13 @@
 }
 
 @media (min-width: 768px) {
+  .t6-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+  }
   .t6-form {
       width: 50%;
   }

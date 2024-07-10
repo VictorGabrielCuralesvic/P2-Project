@@ -36,5 +36,14 @@
   .t5-wide {
     padding-bottom: 20px;
     display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .t5-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
   }
 }
