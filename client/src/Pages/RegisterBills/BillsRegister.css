@@ -1,106 +1,107 @@
-  
-.container {
+/*Tela Balanço = t12*/
+
+.t12 {
     background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+  }
+
+.t12-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 70px 70px 0px 0px;
     padding: 20px;
+    overflow-y: auto;
 }
 
-.container-two {
-    background-color: #F1FFF3;
-}
-  
-.title {
-    font-size: 24px;
-    margin-bottom: 20px;
-    text-align: center;
-    color: #093030;
-}
-  
-.money {
+.t12-resume{
     display: flex;
     justify-content: space-around;
-    width: 100%;
-    max-width: 400px;
-    margin-bottom: 20px;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
-  
-.money-item {
+
+.t12-resume-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.t12-resume-money-l {
+    font-size:x-large;
+    font-weight: 600;
+}
+
+.t12-resume-money-r {
+    font-size:x-large;
+    font-weight: 600;
+    color: #0068FF;
+}
+
+.t12-button-box{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-  
-.profit {
-    color: green;
-    font-size: 18px;
-}
-  
-.expense {
-    color: red;
-    font-size: 18px;
-}
-  
-.buttons {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-  
-.button {
+
+.t12-button {
+    background-color: #00D09E;
+    font-size:20px;
+    font-weight: bold;
     width: 80%;
-    max-width: 300px;
-    padding: 10px;
-    font-size: 16px;
-    color: #093030;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
     border: none;
-    border-radius: 10px;
-    margin: 10px 0;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.t12-button:hover {
     cursor: pointer;
 }
-  
-.note-expenses, .sells {
-    background-color: #00d09e;
+
+.t12-graphics {
+    padding-top: 50px;
 }
-  
-.note-expenses:hover, .sells:hover {
-    background-color: #45a049;
-}
-  
-.ps {
-    background-color: #3299FF;
-}
-  
-.ps:hover {
-    background-color: #0b7dda;
-}
-  
-.chart-container {
-    background-color: #F1FFF3;
-    padding: 20px;
-    border-radius: 10%;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
-    width: 100%;
-    max-width: 400px;
-}
-  
-.chart-title {
-    font-size: 18px;
-    color: #093030;
-    margin-bottom: 10px;
-    text-align: center;
-}
-  
-.chart {
-    display: flex;
-    justify-content: center;
-}
-  
-.bottom-navigation {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-}
+
+@media (min-width: 768px) {
+    .t12-bottom {
+        background-color: #f1fff3;
+        min-height: 100vh;
+        border-radius: 0px 0px 0px 0px;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .t12-graphics {
+        padding-top: 0px;
+        width: 50vw;
+    }
+    .t12-media-l{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    .t12-button-box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .t12-button {
+        background-color: #00D09E;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        border-radius: 50px;
+        height: 100%;
+        border: none;
+        box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 0px;
+        text-align: center;
+        margin-right: 10px;
+    }
+  }
