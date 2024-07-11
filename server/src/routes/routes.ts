@@ -33,4 +33,5 @@ router.post("/transactions", authMiddleware, transactionController.create);
 router.get("/transactions", authMiddleware, transactionController.list);
 
 // price calculation route
-router.post("/calculate-price", authMiddleware, priceCalculationController.calculatePrice);
+router.post("/calculate-price", authMiddleware, priceCalculationController.calculatePrice.bind(priceCalculationController));
+router.get("/products", authMiddleware, priceCalculationController.getProducts);

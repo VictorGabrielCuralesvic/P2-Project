@@ -13,38 +13,40 @@ const PricingInfo = () => {
     const [laborCosts, setLaborCosts] = useState(0);
     const [packagingCosts, setPackagingCosts] = useState(0);
     const [indirectCosts, setIndirectCosts] = useState(0);
-    const [quantityProduced, setQuantityProduced] = useState(0);
     const [profitMargin, setProfitMargin] = useState(0);
     const [isIngredientModalOpen, setIsIngredientModalOpen] = useState(false);
-    const [isModalCostOpen, setIsModalCostOpen] = useState(false);
     const [isProfitMarginModalOpen, setIsProfitMarginModalOpen] = useState(false);
 
     const handleAddIngredient = (ingredient) => {
-        setIngredients([...ingredients, ingredient]);
+        setIngredients([...ingredients, {
+            ...ingredient,
+            quantity: parseFloat(ingredient.quantity),
+            price: parseFloat(ingredient.price),
+            usedQuantity: parseFloat(ingredient.usedQuantity)
+        }]);
         setIsIngredientModalOpen(false);
     };
 
-    const handleSaveQuantityProduced = (quantity) => {
-        setQuantityProduced(quantity);
-        setIsModalCostOpen(false);
-    };
-
     const handleSaveProfitMargin = (margin) => {
-        setProfitMargin(margin);
+        setProfitMargin(parseFloat(margin));
         setIsProfitMarginModalOpen(false);
     };
 
     const handleCalculatePrice = async () => {
-        const ingredientCosts = ingredients.reduce((sum, ingredient) => sum + (ingredient.price * ingredient.usedQuantity), 0);
+        const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.post('/api/calculatePrice', {
+            const response = await axios.post('http://localhost:5000/calculate-price', {
                 productName,
-                ingredientCosts,
-                laborCosts,
-                packagingCosts,
-                indirectCosts,
-                margin: profitMargin,
+                ingredients,
+                laborCosts: parseFloat(laborCosts),
+                packagingCosts: parseFloat(packagingCosts),
+                indirectCosts: parseFloat(indirectCosts),
+                margin: parseFloat(profitMargin),
+            }, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
             });
             alert(`Preço Sugerido: ${response.data.suggestedPrice}`);
         } catch (error) {
@@ -74,30 +76,25 @@ const PricingInfo = () => {
                 <div className="costs-section">
                     <h3>Custos</h3>
                     <div className="cost-item">
-                        <p>Quantidade Produzida: {quantityProduced}</p>
-                        <button onClick={() => setIsModalCostOpen(true)}>Editar</button>
-                    </div>
-                    <div className="cost-item">
                         <p>Margem De Lucro: {profitMargin}</p>
                         <button onClick={() => setIsProfitMarginModalOpen(true)}>Editar</button>
                     </div>
                     <div className="cost-item">
                         <p>Custos de Mão de Obra: {laborCosts}</p>
-                        <input type="number" value={laborCosts} onChange={(e) => setLaborCosts(e.target.value)} />
+                        <input type="number" value={laborCosts} onChange={(e) => setLaborCosts(parseFloat(e.target.value))} />
                     </div>
                     <div className="cost-item">
                         <p>Custos de Embalagem: {packagingCosts}</p>
-                        <input type="number" value={packagingCosts} onChange={(e) => setPackagingCosts(e.target.value)} />
+                        <input type="number" value={packagingCosts} onChange={(e) => setPackagingCosts(parseFloat(e.target.value))} />
                     </div>
                     <div className="cost-item">
                         <p>Custos Indiretos: {indirectCosts}</p>
-                        <input type="number" value={indirectCosts} onChange={(e) => setIndirectCosts(e.target.value)} />
+                        <input type="number" value={indirectCosts} onChange={(e) => setIndirectCosts(parseFloat(e.target.value))} />
                     </div>
                 </div>
                 <button onClick={handleCalculatePrice}>Calcular Preço</button>
             </div>
             {isIngredientModalOpen && <ModalIng onAddIngredient={handleAddIngredient} onClose={() => setIsIngredientModalOpen(false)} />}
-            {isModalCostOpen && <ModalCost onSave={handleSaveQuantityProduced} onClose={() => setIsModalCostOpen(false)} />}
             {isProfitMarginModalOpen && <ProfitMarginModal onSave={handleSaveProfitMargin} onClose={() => setIsProfitMarginModalOpen(false)} />}
         </div>
     );
