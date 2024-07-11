@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import '../../Components/Style.css';
-import ModalIng from './modaling';
-import ModalCost from './ModalCost';
-import ProfitMarginModal from './ModalMargin';
+import ModalIng from './PriceCalc/modaling';
+import ModalCost from './PriceCalc/ModalCost';
+import ProfitMarginModal from './PriceCalc/ModalMargin';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 

@@ -7,7 +7,7 @@ import ProfileEdit from './Pages/ProfileEdit/ProfileEdit';
 import UserProfile from './Pages/UserProfile/UserProfile';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import PricingDashboard from './Pages/PricingDashboard/PricingDashboard';
-import PricingInfo from './Pages/PriceCalc/calc';
+import PricingInfo from './Pages/PricingInfo/PricingInfo';
 import Vendas from './Pages/Vendas/vendas';
 import BillsRegister from './Pages/RegisterBills/BillsRegister';
 
