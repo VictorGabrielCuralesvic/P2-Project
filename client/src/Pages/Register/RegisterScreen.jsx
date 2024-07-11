@@ -14,20 +14,23 @@ const RegisterScreen = () => {
 
     const handleRegister = async () => {
         // Lógica de registro
-        if (password !== confirmPassword) {
+        /* if (password !== confirmPassword) {
             console.error('Senhas não coincidem');
             return;
-        }
+        } */
+
+        const userData = {
+            name: fullName,
+            email,
+            password,
+            //phone: phoneNumber,
+            //birthDate
+        };
+
+        console.log(userData);
 
         try {
-            const response = await axios.post('http://localhost:5000/register', {
-                name: fullName,
-                email,
-                password,
-                phone: phoneNumber,
-                birthDate
-            });
-
+            const response = await axios.post('http://localhost:5000/register', userData);
             //setSuccess('Registro efetuado com sucesso');
             console.log('Registro efetuado com:', response.data);
         } catch (error) {
@@ -62,21 +65,21 @@ const RegisterScreen = () => {
                             className='t2-input'
                             onChange={(e) => setEmail(e.target.value)}
                         />
-                        <label className='t2-label'>Número de Telefone</label>
+                        {/* <label className='t2-label'>Número de Telefone</label>
                         <input
                             type="tel"
                             placeholder="(00) 00000-0000"
                             value={phoneNumber}
                             className='t2-input'
                             onChange={(e) => setPhoneNumber(e.target.value)}
-                        />
-                        <label className='t2-label'>Data de Nascimento</label>
+                        /> */}
+                        {/* <label className='t2-label'>Data de Nascimento</label>
                         <input
                             type="date"
                             value={birthDate}
                             className='t2-input'
                             onChange={(e) => setBirthDate(e.target.value)}
-                        />
+                        /> */}
                         <label className='t2-label'>Senha</label>
                         <input
                             type="password"
@@ -85,14 +88,14 @@ const RegisterScreen = () => {
                             className='t2-input'
                             onChange={(e) => setPassword(e.target.value)}
                         />
-                        <label className='t2-label'>Confirme a Senha</label>
+                        {/* <label className='t2-label'>Confirme a Senha</label>
                         <input
                             type="password"
                             placeholder="●●●●●●●●"
                             value={confirmPassword}
                             className='t2-input'
                             onChange={(e) => setConfirmPassword(e.target.value)}
-                        />
+                        /> */}
                     </div>
                     <div className='t2-box-button'>
                         <div className='t2-buttons'>

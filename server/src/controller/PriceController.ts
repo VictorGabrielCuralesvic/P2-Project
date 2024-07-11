@@ -48,8 +48,11 @@ export class PriceController {
     }
 
     async getProducts(req: Request, res: Response) {
+        const userId = req.user.userId;
+
         try {
             const products = await prisma.priceCalculation.findMany({
+                where: { userId },
                 include: {
                     ingredients: true
                 }
