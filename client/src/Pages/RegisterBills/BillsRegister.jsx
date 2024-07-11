@@ -4,11 +4,16 @@ import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation
 import Header from "../../Components/Header/Header";
 import { LuArrowDownRightSquare, LuArrowUpRightSquare } from "react-icons/lu";
 import BillsRegisterGraphics from "../../Components/BillsRegisterGraphics/BillsRegisterGraphics";
+import { useNavigate } from "react-router-dom";
 
 const BillsRegister = () =>{
+    const navigate = useNavigate();
+    const handleVendas =  () => {
+        navigate('/vendas');
+    }
     return (
         <div className="t12">
-            <Header showIcon={true} />
+            <Header/>
             <div className='t12-bottom'>
                 <div className="t12-media-l">
                     <div className="t12-resume">
@@ -24,7 +29,7 @@ const BillsRegister = () =>{
                     <div className="t12-button-box">
                         <button className="t12-button">Anotar Despesas</button>
                         <button className="t12-button">Produtos Vendidos</button>
-                        <button className="t12-button">Vendas</button>
+                        <button className="t12-button" onClick={handleVendas}>Vendas</button>
                     </div>
                 </div>
                 <div>

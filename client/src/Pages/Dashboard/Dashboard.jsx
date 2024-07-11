@@ -11,6 +11,10 @@ const Dashboard = () => {
   const handleBills = () => {
     navigate('/RegisterBills');
 };
+  const handlePrice = () => {
+    navigate('/PricingDashboard');
+  }
+
   return (
     <div className='t3'>
       <Header showIcon={false} />
@@ -28,7 +32,7 @@ const Dashboard = () => {
         </div>
       
         <div className='t3-box-button'>
-          <button className='t3-button'>Precificações</button>
+          <button onClick={handlePrice} className='t3-button'>Precificações</button>
           <button onClick={handleBills} className='t3-button'>Balanço</button>
         </div>
       </div>

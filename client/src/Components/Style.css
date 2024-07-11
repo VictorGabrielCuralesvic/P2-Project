@@ -1,0 +1,158 @@
+/*precificação
+
+.pricing-container {
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.product-item {
+  background-color: #e0f7fa;
+  padding: 10px;
+  border-radius: 5px;
+  width: 100px;
+  text-align: center;
+}
+
+.add-product-button {
+  background-color: #00796b;
+  color: white;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* modal de precificação
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}*/
+
+input {
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+/*informação de precificação e modais */
+.container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.title {
+  font-size: 24px;
+  color: #0A9396;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.product-info, .ingredients-section, .costs-section, .price-section {
+  background-color: #E9F5F5;
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+h2, h3 {
+  color: #005F73;
+}
+
+.product-info input, .ingredients-section input, .costs-section input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  border: 1px solid #94D2BD;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #0A9396;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+button:hover {
+  background-color: #005F73;
+}
+
+.ingredient-item, .cost-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid #94D2BD;
+}
+
+.ingredient-item:last-child, .cost-item:last-child {
+  border-bottom: none;
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 20px;
+  border: 2px solid #0A9396;
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+.modal h2 {
+  color: #005F73;
+}
+
+.modal input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #94D2BD;
+  border-radius: 5px;
+}
+
+.modal button {
+  width: 48%;
+  margin: 5px 1%;
+}
+
+.modal button:first-child {
+  background-color: #E63946;
+}
+
+.modal button:first-child:hover {
+  background-color: #B32637;
+}

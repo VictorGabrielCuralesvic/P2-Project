@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './RegisterScreen.css'
 import LogoPC from '../../Assets/LogoPC.png'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const RegisterScreen = () => {
     const [fullName, setFullName] = useState('');
@@ -11,13 +12,28 @@ const RegisterScreen = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
 
-    const handleRegister = () => {
+    const handleRegister = async () => {
         // Lógica de registro
         if (password !== confirmPassword) {
             console.error('Senhas não coincidem');
             return;
         }
-        console.log('Registro efetuado com:', fullName, email, phoneNumber, birthDate, password);
+
+        try {
+            const response = await axios.post('http://localhost:5000/register', {
+                name: fullName,
+                email,
+                password,
+                phone: phoneNumber,
+                birthDate
+            });
+
+            //setSuccess('Registro efetuado com sucesso');
+            console.log('Registro efetuado com:', response.data);
+        } catch (error) {
+            //setError('erro ao registrar. Tente novamente');
+            console.error('erro ao registrar:', error);
+        }
     };
 
     return (

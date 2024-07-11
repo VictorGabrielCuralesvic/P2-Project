@@ -2,6 +2,7 @@ import { useState } from 'react';
 import './ResetPasswordScreen.css'
 import LogoPC from '../../Assets/LogoPC.png'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const ResetPasswordScreen = () => {
     const [email, setEmail] = useState('');
@@ -9,20 +10,31 @@ const ResetPasswordScreen = () => {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [token, setToken] = useState('');
 
-    const handleRequestReset = () => {
+    const handleRequestReset = async () => {
         // Lógica para solicitar redefinição de senha
-        console.log('Solicitação de redefinição de senha para:', email);
+        try {
+            const response = await axios.post("http://localhost:5000/request-password-reset", { email });
+            console.log('Solicitação de redefinição de senha para:', email);
+        } catch (error) {
+            console.error('error requesting password reset', error);
+        }
+
     };
 
-    const handleResetPassword = () => {
+    const handleResetPassword = async () => {
         if (newPassword !== confirmPassword) {
             console.error('As senhas não correspondem');
             return;
         }
         // Lógica para redefinir a senha
-        console.log('Redefinição de senha com:', token, newPassword);
+        try {
+            const response = await axios.post("http://localhost:5000/reset-password", { token, newPassword });
+            console.log('Redefinição de senha com:', token, newPassword);
+        } catch (error) {
+            console.error('error resetting password:', error);
+        }
     };
-
+    
     return (
         <div className='t1-1'>
             <div className='t1-1-header'>
