@@ -63,3 +63,12 @@
     align-items: center;
   }
 
+  @media (min-width: 768px) {
+    .t7-bottom {
+      background-color: #f1fff3;
+      min-height: 100vh;
+      border-radius: 0px 0px 0px 0px;
+      padding: 20px;
+      overflow-y: auto;
+  }  
+  }
