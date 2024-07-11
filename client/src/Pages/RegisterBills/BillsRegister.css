@@ -1,0 +1,107 @@
+/*Tela Balanço = t12*/
+
+.t12 {
+    background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+  }
+
+.t12-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 70px 70px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.t12-resume{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.t12-resume-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.t12-resume-money-l {
+    font-size:x-large;
+    font-weight: 600;
+}
+
+.t12-resume-money-r {
+    font-size:x-large;
+    font-weight: 600;
+    color: #0068FF;
+}
+
+.t12-button-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.t12-button {
+    background-color: #00D09E;
+    font-size:20px;
+    font-weight: bold;
+    width: 80%;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.t12-button:hover {
+    cursor: pointer;
+}
+
+.t12-graphics {
+    padding-top: 50px;
+}
+
+@media (min-width: 768px) {
+    .t12-bottom {
+        background-color: #f1fff3;
+        min-height: 100vh;
+        border-radius: 0px 0px 0px 0px;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .t12-graphics {
+        padding-top: 0px;
+        width: 50vw;
+    }
+    .t12-media-l{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    .t12-button-box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .t12-button {
+        background-color: #00D09E;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        border-radius: 50px;
+        height: 100%;
+        border: none;
+        box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 0px;
+        text-align: center;
+        margin-right: 10px;
+    }
+  }

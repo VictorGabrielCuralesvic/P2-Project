@@ -1,15 +1,15 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LoginScreen from './Pages/Login';
-import RegisterScreen from './Pages/Register';
-import ResetPasswordScreen from './Pages/ResetPass';
-import ProfileEdit from './Pages/ProfileEdit';
-import UserProfile from './Pages/UserProfile';
-import Dashboard from './Pages/Dashboard';
-import RegisterBills from './Pages/RegisterBills';
-import PricingDashboard from './Pages/PriceCalc';
+import LoginScreen from './Pages/Login/LoginScreen';
+import RegisterScreen from './Pages/Register/RegisterScreen';
+import ResetPasswordScreen from './Pages/ResetPass/ResetPasswordScreen';
+import ProfileEdit from './Pages/ProfileEdit/ProfileEdit';
+import UserProfile from './Pages/UserProfile/UserProfile';
+import Dashboard from './Pages/Dashboard/Dashboard';
+import PricingDashboard from './Pages/PricingDashboard/PricingDashboard';
 import PricingInfo from './Pages/PriceCalc/calc';
-import Vendas from './Pages/RegisterBills/vendas';
+import Vendas from './Pages/Vendas/vendas';
+import BillsRegister from './Pages/RegisterBills/BillsRegister';
 
 const App = () => {
   return (
@@ -21,7 +21,7 @@ const App = () => {
         <Route path="/ResetPassword" element={<ResetPasswordScreen/>} />
         <Route path="/ProfileEdit" element={<ProfileEdit/>} />
         <Route path="/UserProfile" element={<UserProfile/>} />
-        <Route path="/RegisterBills" element={<RegisterBills/>} />
+        <Route path="/RegisterBills" element={<BillsRegister/>} />
         <Route path="/PricingDashboard" element={<PricingDashboard/>} />
         <Route path="/PricingInfo" element={<PricingInfo/>} />
         <Route path="/vendas" element={<Vendas />} />

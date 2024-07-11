@@ -1,0 +1,48 @@
+/*BillsRegisterGraphics = t12-1*/
+
+.t12-1 {
+    background-color: #DFF7E2;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+    max-width: 100%;;
+    border-radius: 50px;
+    padding: 20px;
+
+  }
+
+  .t12-1 h2 {
+    font-size: large;
+  }
+
+  .t12-1-title-box{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .t12-1-icon-box{
+    display: flex;
+  }
+
+  .t2-1-icon{
+    background-color: #00D09E;
+    display: flex;
+    padding: 10px 10px;
+    border-radius: 12px;
+    margin-left: 5px;
+  }
+
+  @media (min-width: 768px) {
+    .t12-1 {
+        background-color: #DFF7E2;
+        font-family: "Poppins-SemiBold", Helvetica;
+        display: flex;
+        flex-direction: column;
+        max-width: 100%;;
+        border-radius: 50px;
+        padding: 20px;
+    
+      }
+  }
