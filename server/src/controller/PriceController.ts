@@ -1,3 +1,4 @@
+import { PriceCalculation } from '@prisma/client';
 import { Ingredient } from './../../node_modules/.prisma/client/index.d';
 import { Request, Response } from "express";
 import prisma from "../utils/prisma";
@@ -60,6 +61,43 @@ export class PriceController {
             return res.status(200).json(products);
         } catch (error) {
             return res.status(500).json({ error: "Erro ao buscar produtos"});
+        }
+    }
+
+    async regiserSale(req: Request, res: Response) {
+        const userId = req.user.userId;
+        const { priceCalculationId, quantity, date } = req.body;
+
+        if (!priceCalculationId || !quantity || !date) {
+            return res.status(400).json({ error: "Todos os campos são obrigatórios" });
+        }
+
+        try {
+            // Fetch the price calculation to get the suggested price
+            const priceCalculation = await prisma.priceCalculation.findUnique({
+                where: { id: priceCalculationId },
+                select: { suggestedPrice: true }
+            });
+
+            if (!priceCalculation) {
+                return res.status(404).json({ error: "Cálculo de preço não encontrado" });
+            }
+
+            const totalValue = priceCalculation.suggestedPrice * quantity;
+
+            const sale = await prisma.sale.create({
+                data: {
+                    userId,
+                    priceCalculationId,
+                    quantity,
+                    totalValue,
+                    date: new Date(date)
+                }
+            });
+
+            return res.status(201).json(sale);
+        } catch (error) {
+            return res.status(500).json({ error: "Erro ao registrar a venda." });
         }
     }
 }

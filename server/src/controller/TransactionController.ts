@@ -42,4 +42,30 @@ export class TransactionController {
             return res.status(500).json({ error: "Error fetching transactions" });
         }
     }
+
+    async getBalance(req: Request, res: Response) {
+        const userId = req.user?.userId;
+        const { startDate, endDate } = req.query;
+
+        try {
+            const transactions = await prisma.transaction.findMany({
+                where: {
+                    userId,
+                    date: {
+                        gte: new Date(String(startDate)),
+                        lte: new Date(String(endDate)),
+                    },
+                },
+            });
+
+            const totalIncome = transactions.filter((t) => t.type === 'INCOME').reduce((sum, t) => sum + t.amount, 0)
+            const totalExpense = transactions.filter((t) => t.type === 'EXPENSE').reduce((sum, t) => sum + t.amount, 0)
+
+            const balance = totalIncome - totalExpense;
+
+            return res.status(200).json({ totalIncome, totalExpense, balance });
+        } catch (error) {
+            return res.status(500).json({ error: 'error calculating balance' });
+        }
+    }
 }
