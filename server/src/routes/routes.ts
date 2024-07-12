@@ -31,7 +31,9 @@ router.post("/reset-password", resetPasswordController.resetPassword);
 // Transaction routes
 router.post("/transactions", authMiddleware, transactionController.create);
 router.get("/transactions", authMiddleware, transactionController.list);
+router.get("/balance", authMiddleware, transactionController.getBalance);
 
 // price calculation route
 router.post("/calculate-price", authMiddleware, priceCalculationController.calculatePrice.bind(priceCalculationController));
 router.get("/products", authMiddleware, priceCalculationController.getProducts);
+router.post("/register-sale", authMiddleware, priceCalculationController.regiserSale);
