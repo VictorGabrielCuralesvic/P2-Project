@@ -1,10 +1,11 @@
 import { useState } from 'react';
-import '../../Components/Style.css';
+import './PricingInfo.css';
 import ModalIng from './PricingInfoModals/modaling';
-import ModalCost from './PricingInfoModals/ModalCost';
 import ProfitMarginModal from './PricingInfoModals/ModalMargin';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
+import Header from '../../Components/Header/Header';
+import { FaEdit } from 'react-icons/fa';
 
 const PricingInfo = () => {
     const navigate = useNavigate();
@@ -56,22 +57,33 @@ const PricingInfo = () => {
     };
 
     return (
-        <div className="container">
-            <h1 className="title">Preço Certo</h1>
-            <div className="product-info">
-                <h2>Nome Do Produto</h2>
-                <input type="text" value={productName} onChange={(e) => setProductName(e.target.value)} placeholder="Nome do Produto" />
-                <div className="ingredients-section">
-                    <h3>Ingredientes</h3>
-                    <button onClick={() => setIsIngredientModalOpen(true)}>Adicionar</button>
-                    {ingredients.map((ingredient, index) => (
-                        <div key={index} className="ingredient-item">
-                            <p>{ingredient.name}</p>
-                            <p>{ingredient.quantity}</p>
-                            <p>{ingredient.price}</p>
-                            <p>{ingredient.usedQuantity}</p>
-                        </div>
-                    ))}
+        <div className="t9">
+            <Header/>
+            <div className="t9-bottom">
+                <h2 className='t9-title'>Nome Do Produto</h2>
+
+                <div className="t9-ingredients-box">
+                    <div className='t9-ingredients-title'>
+                        <h3>Ingredientes</h3>
+                        <button className='t9-button' onClick={() => setIsIngredientModalOpen(true)}>Adicionar</button>
+                    </div>
+                    <div className='t9-ingredient-box'>
+                        {ingredients.map((ingredient, index) => (
+                            <div key={index} className="t9-ingredient">
+                                <div className='t9-ingredient-text'>
+                                    <p className='t9-item-title'>{ingredient.name}</p>
+                                    <div className='t9-item-list'>
+                                        <p>Quantidade: {ingredient.quantity}g.</p>
+                                        <p>Preço: R${ingredient.price}.</p>
+                                        <p>Quant. Utilizada: {ingredient.usedQuantity}g.</p>
+                                    </div>
+                                </div>
+                                <div className='t9-icon'>
+                                    <FaEdit />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
                 </div>
                 <div className="costs-section">
                     <h3>Custos</h3>
