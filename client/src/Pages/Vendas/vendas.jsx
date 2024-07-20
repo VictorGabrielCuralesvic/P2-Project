@@ -4,8 +4,10 @@ import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation
 import axios from "axios";
 import Header from "../../Components/Header/Header";
 
-const Vendas = () =>{
+const Vendas = () => {
     const [products, setProducts] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [newProductName, setNewProductName] = useState("");
 
     useEffect(() => {
         const fetchProducts = async () => {
@@ -68,29 +70,65 @@ const Vendas = () =>{
         }
     };
 
+    const handleNewSale = () => {
+        setShowModal(true);
+    };
+
+    const handleAddNewProduct = () => {
+        if (newProductName.trim() !== "") {
+            const newProduct = { name: newProductName, quantity: 0, id: products.length + 1 };
+            setProducts([...products, newProduct]);
+            setShowModal(false);
+            setNewProductName("");
+        } else {
+            alert("Please enter a product name");
+        }
+    };
+
     return (
         <div className="t13">
-            <Header/>
-        <div className="t13-bottom">
-        <h1 className="t13-title">Vendas</h1>
-            <div className="t13-vendas">
-                {Array.isArray(products) && products.length > 0 ? (
-                    products.map((product, index) => (
-                        <div key={index} className="t13-sales-item">
-                            <p>{product.name}</p>
-                            <p>Quantidade: {product.quantity}</p>
-                            <button onClick={() => handleDecrease(index)}>-</button>
-                            <button onClick={() => handleIncrease(index)}>+</button>
-                            <button className="register-button" onClick={() => handleSale(index)}>Registrar Venda</button>
-                        </div>
-                    ))
-                ) : (
-                    <p>No products available.</p>
-                )}
+            <Header />
+            <div className="t13-bottom">
+                <h1 className="t13-title">Vendas</h1>
+                <div className="t13-vendas">
+                    {Array.isArray(products) && products.length > 0 ? (
+                        products.map((product, index) => (
+                            <div key={index} className="t13-sales-item">
+                                <p>{product.name}</p>
+                                <p>Quantidade: {product.quantity}</p>
+                                <div className="t13-quantity-control">
+                                <button onClick={() => handleDecrease(index)}>-</button>
+                                <button onClick={() => handleIncrease(index)}>+</button>  
+                                
+                                </div>
+                            </div>
+                        ))
+                    ) : (
+                        <>
+                            <p>Nenhuma venda disponível.</p>
+                        </>
+                    )}
+                    <button className="t13-new-sale-button" onClick={handleNewSale}>Nova Venda</button>
+                </div>
+                <BottomNavigation />
             </div>
-            <BottomNavigation />
+
+            {showModal && (
+                <div className="t13-modal">
+                    <div className="t13-modal-content">
+                        <h2>Adicionar Nova Venda</h2>
+                        <input 
+                            type="text" 
+                            value={newProductName} 
+                            onChange={(e) => setNewProductName(e.target.value)} 
+                            placeholder="Nome da Venda" 
+                        />
+                        <button onClick={handleAddNewProduct}>Adicionar</button>
+                        <button onClick={() => setShowModal(false)}>Cancelar</button>
+                    </div>
+                </div>
+            )}
         </div>
-    </div>
     );
 };
 
