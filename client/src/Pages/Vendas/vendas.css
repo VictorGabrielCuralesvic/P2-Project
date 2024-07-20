@@ -1,0 +1,97 @@
+/* Tela Vendas = t13 */
+
+.t13 {
+    background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.t13-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 70px 70px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.t13-title {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.t13-vendas {
+    background-color: #f1fff3;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.t13-sales-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e7ffed;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.t13-sales-item p {
+    margin: 0;
+    font-size: 1em;
+    flex-grow: 1;
+}
+
+.t13-sales-item button {
+    background-color: #00D09E;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.t13-sales-item button:hover {
+    cursor: pointer;
+    background-color: #00a97f;
+}
+
+.t13-sales-item .register-button {
+    background-color: #0068FF;
+    width: auto;
+    height: auto;
+    padding: 5px 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.t13-sales-item .register-button:hover {
+    background-color: #0051cc;
+}
+
+@media (min-width: 768px) {
+    .t13-bottom {
+        background-color: #f1fff3;
+        min-height: 100vh;
+        border-radius: 0px 0px 0px 0px;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .t13-vendas {
+        width: 50%;
+    }
+}

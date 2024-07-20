@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import '../../Components/Style.css';
+import './vendas.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import axios from "axios";
+import Header from "../../Components/Header/Header";
 
 const Vendas = () =>{
     const [products, setProducts] = useState([]);
@@ -68,28 +69,28 @@ const Vendas = () =>{
     };
 
     return (
-        <div className="container">
-            <div className="container-two">
-                <h1 className="title">Preço Certo</h1>
-                <div className="vendas">
-                    <h2 className="titletwo">Vendas</h2>
-                    {Array.isArray(products) && products.length > 0 ? (
-                        products.map((product, index) => (
-                            <div key={index} className="sales-item">
-                                <p>{product.name}</p>
-                                <p>Quantidade: {product.quantity}</p>
-                                <button onClick={() => handleDecrease(index)}>-</button>
-                                <button onClick={() => handleIncrease(index)}>+</button>
-                                <button onClick={() => handleSale(index)}>Registrar Venda</button>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No products available.</p>
-                    )}
-                </div>
-                <BottomNavigation/>
+        <div className="t13">
+            <Header/>
+        <div className="t13-bottom">
+        <h1 className="t13-title">Vendas</h1>
+            <div className="t13-vendas">
+                {Array.isArray(products) && products.length > 0 ? (
+                    products.map((product, index) => (
+                        <div key={index} className="t13-sales-item">
+                            <p>{product.name}</p>
+                            <p>Quantidade: {product.quantity}</p>
+                            <button onClick={() => handleDecrease(index)}>-</button>
+                            <button onClick={() => handleIncrease(index)}>+</button>
+                            <button className="register-button" onClick={() => handleSale(index)}>Registrar Venda</button>
+                        </div>
+                    ))
+                ) : (
+                    <p>No products available.</p>
+                )}
             </div>
+            <BottomNavigation />
         </div>
+    </div>
     );
 };
 
