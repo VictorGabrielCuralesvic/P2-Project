@@ -23,6 +23,7 @@ model User {
   transactions      Transaction[]
   priceCalculations PriceCalculation[]
   reports           Report[]           @relation("UserReports")
+  Sale              Sale[]
 }
 
 model Transaction {
@@ -51,6 +52,7 @@ model PriceCalculation {
   totalCost       Float        @default(0.0)
   suggestedPrice  Float
   ingredients     Ingredient[]
+  Sale            Sale[]
 }
 
 model Ingredient {
@@ -88,6 +90,17 @@ model PasswordReset {
   token     String
   createdAt DateTime @default(now())
   expiresAt DateTime
+}
+
+model Sale {
+  id                 Int              @id @default(autoincrement())
+  user               User             @relation(fields: [userId], references: [id])
+  userId             Int
+  priceCalculation   PriceCalculation @relation(fields: [priceCalculationId], references: [id])
+  priceCalculationId Int
+  quantity           Int
+  totalValue          Float            @default(0.0)
+  date               DateTime         @default(now())
 }
 
 enum TransactionType {
