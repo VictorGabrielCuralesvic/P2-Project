@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import './PricingDashboard.css';
 import PricingModal from './PricingModal/PricingModal.jsx';
 import axios from 'axios';
@@ -10,22 +10,6 @@ const PricingDashboard = () => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await axios.get('http://localhost:5000/products', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-                setProducts(response.data);
-            } catch (error) {
-                console.error("erro ao buscar produtos:", error);
-            }
-        };
-        fetchProducts();
-    }, []);
 
     const handleAddProduct = (product) => {
         setProducts([...products, product]);
@@ -43,20 +27,18 @@ const PricingDashboard = () => {
                 <h1 className='t7-title'>Produtos</h1>
                 <div>
                     <button className='t7-button' onClick={() => setIsModalOpen(true)}>
-                    <FaPlus /><h3 className='t7-title-2'>Novo Produto</h3>
+                        <FaPlus /><h3 className='t7-title-2'>Novo Produto</h3>
                     </button>
                     <div className='t7-produit-box'>
-                        
                         {products.map((product, index) => (
                             <div className='t7-produit' key={index} onClick={handleProduct}>
-                                <h3 className='t7-title-3'>{product.productName}</h3>
-                                <p>{product.suggestedPrice}</p>
+                                <h3 className='t7-title-3'>{product.name}</h3>
+                                <p>price</p>
                             </div>
                         ))}
                     </div>
                 </div>
-            {isModalOpen && <PricingModal onAddProduct={handleAddProduct} onClose={() => setIsModalOpen(false)} />}
-
+                {isModalOpen && <PricingModal onAddProduct={handleAddProduct} onClose={() => setIsModalOpen(false)} />}
             </div>
         </div>
     );
