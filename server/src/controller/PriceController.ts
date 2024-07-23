@@ -73,7 +73,6 @@ export class PriceController {
         }
 
         try {
-            // Fetch the price calculation to get the suggested price
             const priceCalculation = await prisma.priceCalculation.findUnique({
                 where: { id: priceCalculationId },
                 select: { suggestedPrice: true }

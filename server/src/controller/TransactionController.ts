@@ -3,7 +3,7 @@ import prisma from "../utils/prisma";
 
 export class TransactionController {
     async create(req: Request, res: Response) {
-        const { type, amount, category, notes, date } = req.body;
+        const { type, amount, date } = req.body;
         const userId = req.user?.userId;
 
         console.log("ID do usuário da requisição:", userId);
@@ -13,8 +13,6 @@ export class TransactionController {
                 data: {
                     type,
                     amount,
-                    category,
-                    notes,
                     date,
                     userId,
                 },
