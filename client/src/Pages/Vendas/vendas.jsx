@@ -94,7 +94,7 @@ const Vendas = () => {
                     {Array.isArray(products) && products.length > 0 ? (
                         products.map((product, index) => (
                             <div key={index} className="t13-sales-item">
-                                <p>{product.name}</p>
+                                <p>{product.productName}</p>
                                 <p>Quantidade: {product.quantity}</p>
                                 <div className="t13-quantity-control">
                                 <button onClick={() => handleDecrease(index)}>-</button>

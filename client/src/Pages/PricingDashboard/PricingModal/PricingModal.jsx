@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import './PricingModal.css';
-import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 const PricingModal = ({ onAddProduct, onClose }) => {
     const [productName, setProductName] = useState('');
 
-    const handleSave = () => {
-        const newProduct = { name: productName };
+    const handleSave = async () => {
+        const newProduct = { productName, suggestedPrice: null };
         onAddProduct(newProduct);
     };
 

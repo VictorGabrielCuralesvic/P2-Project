@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './PricingDashboard.css';
 import PricingModal from './PricingModal/PricingModal.jsx';
 import axios from 'axios';
@@ -10,6 +10,24 @@ const PricingDashboard = () => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+
+    useEffect(() => {
+        const fetchProducts = async () => {
+            const token = localStorage.getItem('token');
+            try {
+                const response = await axios.get('http://localhost:5000/products', {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                setProducts(response.data);
+            } catch (error) {
+                console.error(error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     const handleAddProduct = (product) => {
         setProducts([...products, product]);
@@ -32,8 +50,8 @@ const PricingDashboard = () => {
                     <div className='t7-produit-box'>
                         {products.map((product, index) => (
                             <div className='t7-produit' key={index} onClick={handleProduct}>
-                                <h3 className='t7-title-3'>{product.name}</h3>
-                                <p>price</p>
+                                <h3 className='t7-title-3'>{product.productName}</h3>
+                                {product.suggestedPrice && <p>{product.suggestedPrice}</p>}
                             </div>
                         ))}
                     </div>

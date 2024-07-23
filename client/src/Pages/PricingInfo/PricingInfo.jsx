@@ -61,7 +61,13 @@ const PricingInfo = () => {
             <Header/>
             <div className="t9-bottom">
                 <h2 className='t9-title'>Nome Do Produto</h2>
-
+                <input
+                    type='text'
+                    value={productName}
+                    onChange={(e) => setProductName(e.target.value)}
+                    placeholder='Digite o nome do produto'
+                    className='product-name-input' 
+                />
                 <div className="t9-ingredients-box">
                     <div className='t9-ingredients-title'>
                         <h3>Ingredientes</h3>
