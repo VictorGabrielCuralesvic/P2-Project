@@ -68,4 +68,37 @@ export class TransactionController {
             return res.status(500).json({ error: 'error calculating balance' });
         }
     }
+
+    async getTotalRevenueByDate(req: Request, res: Response) {
+        const userId = req.user?.userId;
+        const date = req.query.date as string;
+
+        if (!date) {
+            return res.status(400).json({ error: "Date is required" });
+        }
+
+        try {
+            const startDate = new Date(date);
+            const endDate = new Date(date);
+            endDate.setDate(endDate.getDate() + 1);
+
+            const totalRevenue = await prisma.sale.aggregate({
+                _sum: {
+                    totalValue: true
+                },
+                where: {
+                    userId,
+                    date: {
+                        gte: startDate,
+                        lt: endDate
+                    }
+                }
+            });
+
+            return res.status(200).json({ totalRevenue: totalRevenue._sum.totalValue || 0 });
+        } catch (error) {
+            console.error(error);
+            return res.status(500).json({ error: "Error fetching total revenue" });
+        }
+    }
 }

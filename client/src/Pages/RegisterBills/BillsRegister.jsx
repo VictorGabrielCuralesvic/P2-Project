@@ -10,8 +10,8 @@ const BillsRegister = () => {
     const [showModal, setShowModal] = useState(false);
     const [type, setType] = useState("Lucro");
     const [value, setValue] = useState("");
-    const [profit, setProfit] = useState(7783.00);
-    const [expense, setExpense] = useState(1187.40);
+    const [profit, setProfit] = useState(0);
+    const [expense, setExpense] = useState(0);
 
     const navigate = useNavigate();
 

@@ -65,7 +65,7 @@ export class PriceController {
     }
 
     async regiserSale(req: Request, res: Response) {
-        const userId = req.user.userId;
+        const userId = req.user?.userId;
         const { priceCalculationId, quantity, date } = req.body;
 
         if (!priceCalculationId || !quantity || !date) {
