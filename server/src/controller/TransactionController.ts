@@ -5,6 +5,8 @@ export class TransactionController {
     async create(req: Request, res: Response) {
         const { type, amount, date } = req.body;
         const userId = req.user?.userId;
+        
+        const formattedDate = new Date(date);
 
         console.log("ID do usuário da requisição:", userId);
 
@@ -13,7 +15,7 @@ export class TransactionController {
                 data: {
                     type,
                     amount,
-                    date,
+                    date: formattedDate,
                     userId,
                 },
             });
@@ -28,12 +30,20 @@ export class TransactionController {
     async list(req: Request, res: Response) {
 
         const userId = req.user?.userId;
+        const { startDate, endDate } = req.query;
+
+        let whereClause: any = { userId };
+
+        if (startDate && endDate) {
+            whereClause.date = {
+                gte: new Date(String(startDate)),
+                lte: new Date(String(endDate)),
+            };
+        }
 
         try {
             const transaction = await prisma.transaction.findMany({
-                where: {
-                    userId
-                },
+                where: whereClause,
             });
             return res.status(200).json(transaction);
         } catch (error) {

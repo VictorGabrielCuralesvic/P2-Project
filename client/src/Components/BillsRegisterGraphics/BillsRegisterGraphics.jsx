@@ -8,20 +8,24 @@ import { FaRegCalendar } from 'react-icons/fa';
 // Registrar os componentes do Chart.js
 Chart.register(LineElement, PointElement, LinearScale, Title, CategoryScale);
 
-const BillsRegisterGraphics = () => {
+const BillsRegisterGraphics = ({ transaction = [] }) => {
+  const labels = transaction.map(t => new Date(t.date).toLocaleDateString());
+  const incomeData = transaction.filter(t => t.type === 'INCOME').map(t => t.amount);
+  const expenseData = transaction.filter(t => t.type === 'EXPENSE').map(t => t.amount);
+
   const data = {
-    labels: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'], // Dias da semana
+    labels,
     datasets: [
       {
         label: 'Lucro',
-        data: [12, 19, 3, 5, 2, 3, 15], // Dados fictícios de lucro
+        data: incomeData,
         borderColor: 'rgba(75, 192, 192, 1)',
         backgroundColor: 'rgba(75, 192, 192, 0.2)',
         fill: true,
       },
       {
         label: 'Gastos',
-        data: [10, 17, 6, 7, 5, 4, 20], // Dados fictícios de gastos
+        data: expenseData,
         borderColor: 'rgba(255, 99, 132, 1)',
         backgroundColor: 'rgba(255, 99, 132, 0.2)',
         fill: true,
@@ -58,5 +62,4 @@ const BillsRegisterGraphics = () => {
     </div>
   );
 };
-
 export default BillsRegisterGraphics;

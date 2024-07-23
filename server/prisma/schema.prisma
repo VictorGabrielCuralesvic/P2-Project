@@ -33,8 +33,6 @@ model Transaction {
   type      TransactionType
   amount    Float
   date      DateTime        @default(now())
-  createdAt DateTime        @default(now())
-  updatedAt DateTime        @updatedAt
 }
 
 model PriceCalculation {
@@ -66,8 +64,6 @@ model Ingredient {
 model FinancialTip {
   id        Int      @id @default(autoincrement())
   content   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
 }
 
 model Report {
@@ -78,16 +74,12 @@ model Report {
   startDate DateTime
   endDate   DateTime
   data      Json
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
 }
 
 model PasswordReset {
   id        Int      @id @default(autoincrement())
   email     String
   token     String
-  createdAt DateTime @default(now())
-  expiresAt DateTime
 }
 
 model Sale {
