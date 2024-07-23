@@ -45,7 +45,7 @@ const Vendas = () => {
         fetchTotalRevenueByDate();
     }, [selectedDate]);
 
-/*     const handleIncrease = (index) => {
+    /* const handleIncrease = (index) => {
         const newProducts = [...products];
         newProducts[index].quantity += 1;
         setProducts(newProducts);
@@ -144,8 +144,9 @@ const Vendas = () => {
                                         value={product.quantity}
                                         onChange={(e) => handleQuantityChange(index, parseInt(e.target.value, 10))}
                                         min="0"
+                                        className="t13-input-quantity"
                                     />
-                                    <button onClick={() => handleSale(index)}>Registrar Venda</button>
+                                    <button onClick={() => handleSale(index)} className="register-button">V</button>
                                 </div>
                             </div>
                         ))
