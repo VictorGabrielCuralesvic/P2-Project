@@ -21,8 +21,12 @@ const PricingModal = ({ onAddProduct, onClose }) => {
                     value={productName}
                     onChange={(e) => setProductName(e.target.value)}
                 />
-                <button className='t7-1-save' onClick={handleSave}>Salvar</button>
-                <button className='t7-1-cancel' onClick={onClose}>Cancelar</button>
+                <div className='t7-1-button-box'>
+                    <button className='t7-1-cancel' onClick={onClose}>Cancelar</button>
+                    <button className='t7-1-save' onClick={handleSave}>Salvar</button>
+                </div>
+                
+                
             </div>
         </div>
     );
