@@ -16,15 +16,33 @@ const PricingInfo = () => {
     const [profitMargin, setProfitMargin] = useState(0);
     const [suggestedPrice, setSuggestedPrice] = useState(''); // Novo estado para o preço sugerido
     const [isIngredientModalOpen, setIsIngredientModalOpen] = useState(false);
+    const [isEditModalOpen, setIsEditModalOpen] = useState(false);
+    const [currentIngredient, setCurrentIngredient] = useState(null);
 
     const handleAddIngredient = (ingredient) => {
-        setIngredients([...ingredients, {
-            ...ingredient,
-            quantity: parseFloat(ingredient.quantity),
-            price: parseFloat(ingredient.price),
-            usedQuantity: parseFloat(ingredient.usedQuantity)
-        }]);
+        if (currentIngredient) {
+            // Edit existing ingredient
+            const updatedIngredients = ingredients.map((ing) =>
+                ing.name === currentIngredient.name ? ingredient : ing
+            );
+            setIngredients(updatedIngredients);
+        } else {
+            // Add new ingredient
+            setIngredients([...ingredients, {
+                ...ingredient,
+                quantity: parseFloat(ingredient.quantity),
+                price: parseFloat(ingredient.price),
+                usedQuantity: parseFloat(ingredient.usedQuantity)
+            }]);
+        }
         setIsIngredientModalOpen(false);
+        setIsEditModalOpen(false);
+        setCurrentIngredient(null);
+    };
+
+    const handleEditIngredient = (ingredient) => {
+        setCurrentIngredient(ingredient);
+        setIsEditModalOpen(true);
     };
 
     const handleCalculatePrice = async () => {
@@ -70,12 +88,12 @@ const PricingInfo = () => {
                                         <div className='t9-ingredient-text'>
                                             <p className='t9-item-title'>{ingredient.name}</p>
                                             <div className='t9-item-list'>
-                                                <p>Quantidade: {ingredient.quantity}g.</p>
-                                                <p>Preço: R${ingredient.price}.</p>
-                                                <p>Quant. Utilizada: {ingredient.usedQuantity}g.</p>
+                                                <p>Quantidade: {ingredient.quantity}</p>
+                                                <p>Preço: R${ingredient.price}</p>
+                                                <p>Quant. Utilizada: {ingredient.usedQuantity}</p>
                                             </div>
                                         </div>
-                                        <div className='t9-icon'>
+                                        <div className='t9-icon' onClick={() => handleEditIngredient(ingredient)}>
                                             <FaEdit />
                                         </div>
                                     </div>
@@ -112,6 +130,7 @@ const PricingInfo = () => {
                 </div>
             </div>
             {isIngredientModalOpen && <ModalIng onAddIngredient={handleAddIngredient} onClose={() => setIsIngredientModalOpen(false)} />}
+            {isEditModalOpen && <ModalIng ingredientToEdit={currentIngredient} onAddIngredient={handleAddIngredient} onClose={() => setIsEditModalOpen(false)} />}
         </div>
     );
 };
