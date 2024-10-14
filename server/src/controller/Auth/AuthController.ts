@@ -1,41 +1,33 @@
 import { Request, Response } from "express";
-import prisma from "../utils/prisma";
-import { compare, hash } from "bcrypt";
-import jwt from "jsonwebtoken";
+import { AuthService } from "./AuthService";
+import { UserService } from "./UserService";
 
 export class AuthController {
+    private userService: UserService;
+    private authService: AuthService;
+
+    constructor() {
+        this.userService = new UserService();
+        this.authService = new AuthService();
+    }
+
     async register(req: Request, res: Response) {
         const { name, email, password } = req.body;
-
-        console.log(req.body);
 
         if (!name || !email || !password) {
             return res.status(400).json({ error: "Missing required fields" });
         }
 
         try {
-            const userExists = await prisma.user.findUnique({ where: { email } });
-
-            if (userExists) {
-                return res.status(400).json({ error: "User already exists" });
-            }
-
-            const hashPassword = await hash(password, 8);
-            const user = await prisma.user.create({
-                data: {
-                    name,
-                    email,
-                    password: hashPassword
-                }
-            });
-
-            const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
-                expiresIn: "1h"
-            });
+            const user = await this.userService.createUser(name, email, password);
+            const token = this.authService.generateToken(user.id.toString());
 
             return res.status(201).json({ user, token });
         } catch (error) {
-            return res.status(500).json({ error: "Internal server error" });
+            if (error instanceof Error) {
+                return res.status(400).json({ error: error.message });
+            }
+            return res.status(400).json({ error: "Unknown error" });
         }
     }
 
@@ -47,22 +39,13 @@ export class AuthController {
         }
 
         try {
-            const user = await prisma.user.findUnique({ where: { email } });
+            const user = await this.userService.findUserByEmail(email);
 
-            if (!user) {
-                return res.status(404).json({ error: "User not found" });
-            }
-
-            const passwordMatch = await compare(password, user.password);
-
-            if (!passwordMatch) {
+            if (!user || !(await this.authService.comparePassword(password, user.password))) {
                 return res.status(401).json({ error: "Invalid credentials" });
             }
 
-            const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET!, {
-                expiresIn: "1h"
-            });
-
+            const token = this.authService.generateToken(user.id.toString());
             return res.status(200).json({ user, token });
         } catch (error) {
             return res.status(500).json({ error: "Internal server error" });
@@ -77,7 +60,7 @@ export class AuthController {
         }
 
         try {
-            const decoded = jwt.verify(token, process.env.JWT_SECRET!);
+            const decoded = this.authService.validateToken(token);
             return res.status(200).json({ valid: true, decoded });
         } catch (error) {
             return res.status(401).json({ error: "Invalid token" });

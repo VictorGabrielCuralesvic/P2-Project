@@ -1,11 +1,11 @@
 import  { Router } from "express";
 /* import { UserController } from "../controller/UserController"; */
-import { AuthController } from "../controller/AuthController";
+import { AuthController } from "../controller/Auth/AuthController";
 import { ResetPasswordController } from "../controller/ResetPasswordController";
 import { TransactionController } from "../controller/TransactionController";
 import { PriceCalculation } from "@prisma/client";
 import { authMiddleware } from "../middleware/authMiddleware";
-import { PriceController } from "../controller/PriceController";
+import { PriceController } from "../controller/Price/PriceController";
 
 
 /* const userController = new UserController(); */
@@ -37,4 +37,4 @@ router.get("/total-revenue-by-date", authMiddleware, transactionController.getTo
 // price calculation route
 router.post("/calculate-price", authMiddleware, priceCalculationController.calculatePrice.bind(priceCalculationController));
 router.get("/products", authMiddleware, priceCalculationController.getProducts);
-router.post("/register-sale", authMiddleware, priceCalculationController.regiserSale);
+router.post("/register-sale", authMiddleware, priceCalculationController.registerSale);
