@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './PricingDashboard.css';
-import PricingModal from './PricingModal/PricingModal.jsx';
+import PricingModal from '../../Components/PricingModal/PricingModal.jsx';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../Components/Header/Header.jsx';
