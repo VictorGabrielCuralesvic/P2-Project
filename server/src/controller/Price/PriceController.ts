@@ -1,19 +1,24 @@
 import { Request, Response } from "express";
-import prisma from "../../utils/prisma";
 import { PriceService } from "./PriceService";
 import { SaleService } from "./SaleService";
-import { Ingredient } from "@prisma/client";
+import { PriceCalculationService } from "./PriceCalculationService";
+import { SaleDatabaseService } from "./SaleDatabaseService";
+import { asyncHandler } from "../../middleware/asyncHandler";
 
 export class PriceController {
     private priceService: PriceService;
     private saleService: SaleService;
+    private priceCalculationService: PriceCalculationService;
+    private saleDatabaseService: SaleDatabaseService;
 
     constructor() {
         this.priceService = new PriceService();
         this.saleService = new SaleService();
+        this.priceCalculationService = new PriceCalculationService();
+        this.saleDatabaseService = new SaleDatabaseService();
     }
 
-    async calculatePrice(req: Request, res: Response) {
+    calculatePrice = asyncHandler(async (req: Request, res: Response) => {
         const userId = req.user?.userId;
         const { productName, ingredients, laborCosts, packagingCosts, indirectCosts, margin } = req.body;
 
@@ -21,54 +26,40 @@ export class PriceController {
             return res.status(400).json({ error: "Todos os campos são obrigatórios, exceto custos de pacote." });
         }
 
-        try {
-            const ingredientCosts = this.priceService.calculateIngredientCosts(ingredients);
-            const totalCost = this.priceService.calculateTotalCost(ingredientCosts, laborCosts, packagingCosts, indirectCosts);
-            const suggestedPrice = this.priceService.calculateSuggestedPrice(totalCost, margin);
+        const ingredientCosts = this.priceService.calculateIngredientCosts(ingredients);
+        const totalCost = this.priceService.calculateTotalCost(ingredientCosts, laborCosts, packagingCosts, indirectCosts);
+        const suggestedPrice = this.priceService.calculateSuggestedPrice(totalCost, margin);
 
-            const priceCalculation = await prisma.priceCalculation.create({
-                data: {
-                    userId,
-                    productName,
-                    ingredientCosts,
-                    laborCosts,
-                    packagingCosts,
-                    indirectCosts,
-                    margin,
-                    totalCost,
-                    suggestedPrice,
-                    ingredients: {
-                        create: ingredients.map((ingredient: Ingredient) => ({
-                            name: ingredient.name,
-                            quantity: ingredient.quantity,
-                            price: ingredient.price,
-                            usedQuantity: ingredient.usedQuantity
-                        })),
-                    },
-                },
-            });
+        const priceCalculation = await this.priceCalculationService.createPriceCalculation({
+            userId,
+            productName,
+            ingredientCosts,
+            laborCosts,
+            packagingCosts,
+            indirectCosts,
+            margin,
+            totalCost,
+            suggestedPrice,
+            ingredients: {
+                create: ingredients.map((ingredient: any) => ({
+                    name: ingredient.name,
+                    quantity: ingredient.quantity,
+                    price: ingredient.price,
+                    usedQuantity: ingredient.usedQuantity,
+                })),
+            },
+        });
 
-            return res.status(201).json(priceCalculation);
-        } catch (error) {
-            return res.status(500).json({ error: "Erro ao calcular o preço." });
-        }
-    }
+        return res.status(201).json(priceCalculation);
+    });
 
-    async getProducts(req: Request, res: Response) {
+    getProducts = asyncHandler(async (req: Request, res: Response) => {
         const userId = req.user?.userId;
+        const products = await this.priceCalculationService.findAllByUserId(userId);
+        return res.status(200).json(products);
+    });
 
-        try {
-            const products = await prisma.priceCalculation.findMany({
-                where: { userId },
-                include: { ingredients: true },
-            });
-            return res.status(200).json(products);
-        } catch (error) {
-            return res.status(500).json({ error: "Erro ao buscar produtos" });
-        }
-    }
-
-    async registerSale(req: Request, res: Response) {
+    registerSale = asyncHandler(async (req: Request, res: Response) => {
         const userId = req.user?.userId;
         const { priceCalculationId, quantity, date } = req.body;
 
@@ -76,31 +67,22 @@ export class PriceController {
             return res.status(400).json({ error: "Todos os campos são obrigatórios" });
         }
 
-        try {
-            const priceCalculation = await prisma.priceCalculation.findUnique({
-                where: { id: priceCalculationId },
-                select: { suggestedPrice: true },
-            });
+        const priceCalculation = await this.priceCalculationService.findById(priceCalculationId);
 
-            if (!priceCalculation) {
-                return res.status(404).json({ error: "Cálculo de preço não encontrado" });
-            }
-
-            const totalValue = this.saleService.calculateTotalValue(priceCalculation.suggestedPrice, quantity);
-
-            const sale = await prisma.sale.create({
-                data: {
-                    userId,
-                    priceCalculationId,
-                    quantity,
-                    totalValue,
-                    date: new Date(date),
-                },
-            });
-
-            return res.status(201).json(sale);
-        } catch (error) {
-            return res.status(500).json({ error: "Erro ao registrar a venda." });
+        if (!priceCalculation) {
+            return res.status(404).json({ error: "Cálculo de preço não encontrado" });
         }
-    }
+
+        const totalValue = this.saleService.calculateTotalValue(priceCalculation.suggestedPrice, quantity);
+
+        const sale = await this.saleDatabaseService.createSale({
+            userId,
+            priceCalculationId,
+            quantity,
+            totalValue,
+            date: new Date(date),
+        });
+
+        return res.status(201).json(sale);
+    });
 }

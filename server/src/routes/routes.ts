@@ -1,40 +1,17 @@
-import  { Router } from "express";
-/* import { UserController } from "../controller/UserController"; */
-import { AuthController } from "../controller/Auth/AuthController";
-import { ResetPasswordController } from "../controller/ResetPasswordController";
-import { TransactionController } from "../controller/TransactionController";
-import { PriceCalculation } from "@prisma/client";
-import { authMiddleware } from "../middleware/authMiddleware";
-import { PriceController } from "../controller/Price/PriceController";
+import { Router } from "express";
+import authRoutes from "./authRoutes";
+import resetPasswordRoutes from "./resetPasswordRoutes";
+import transactionRoutes from "./transactionRoutes";
+import priceRoutes from "./priceRoutes";
+import { errorHandler } from "../middleware/errorHandler";
 
+const router = Router();
 
-/* const userController = new UserController(); */
-const authController = new AuthController();
-const resetPasswordController = new ResetPasswordController();
-const transactionController = new TransactionController();
-const priceCalculationController = new PriceController();
-export const router = Router();
+router.use(authRoutes);
+router.use(resetPasswordRoutes);
+router.use(transactionRoutes);
+router.use(priceRoutes);
 
-// User routes
-/* router.post("/createuser", userController.store);
-router.get("/users", userController.index); */
+router.use(errorHandler);
 
-// Auth routes
-router.post("/register", authController.register);
-router.post("/login", authController.login);
-router.get("/validate-token", authController.validateToken);
-
-// Reset Passwords routes
-router.post("/request-password-reset", resetPasswordController.requestPasswordReset);
-router.post("/reset-password", resetPasswordController.resetPassword);
-
-// Transaction routes
-router.post("/transactions", authMiddleware, transactionController.create);
-router.get("/transactions", authMiddleware, transactionController.list);
-router.get("/balance", authMiddleware, transactionController.getBalance);
-router.get("/total-revenue-by-date", authMiddleware, transactionController.getTotalRevenueByDate);
-
-// price calculation route
-router.post("/calculate-price", authMiddleware, priceCalculationController.calculatePrice.bind(priceCalculationController));
-router.get("/products", authMiddleware, priceCalculationController.getProducts);
-router.post("/register-sale", authMiddleware, priceCalculationController.registerSale);
+export default router;

@@ -13,4 +13,4 @@ export class PriceService {
     calculateSuggestedPrice(totalCost: number, margin: number): number {
         return parseFloat((totalCost * (1 + (margin / 100))).toFixed(2));
     }
-}
+}   
