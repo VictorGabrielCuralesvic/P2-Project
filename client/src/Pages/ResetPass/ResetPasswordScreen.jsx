@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './ResetPasswordScreen.css'
-import LogoPC from '../../Assets/LogoPC.png'
+import './ResetPasswordScreen.css';
+import LogoPC from '../../Assets/LogoPC.png';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { requestPasswordReset, resetPassword } from '../../Services/Api';
 
 const ResetPasswordScreen = () => {
     const [email, setEmail] = useState('');
@@ -13,12 +13,11 @@ const ResetPasswordScreen = () => {
     const handleRequestReset = async () => {
         // Lógica para solicitar redefinição de senha
         try {
-            const response = await axios.post("http://localhost:5000/request-password-reset", { email });
+            await requestPasswordReset(email);
             console.log('Solicitação de redefinição de senha para:', email);
         } catch (error) {
-            console.error('error requesting password reset', error);
+            console.error('Error requesting password reset', error);
         }
-
     };
 
     const handleResetPassword = async () => {
@@ -28,13 +27,13 @@ const ResetPasswordScreen = () => {
         }
         // Lógica para redefinir a senha
         try {
-            const response = await axios.post("http://localhost:5000/reset-password", { token, newPassword });
+            await resetPassword(token, newPassword);
             console.log('Redefinição de senha com:', token, newPassword);
         } catch (error) {
-            console.error('error resetting password:', error);
+            console.error('Error resetting password:', error);
         }
     };
-    
+
     return (
         <div className='t1-1'>
             <div className='t1-1-header'>
@@ -48,14 +47,14 @@ const ResetPasswordScreen = () => {
                     <div className='t1-1-form'>
                         <label className='t1-1-label'>E-mail</label>
                         <div className='t1-1-teste'>
-                        <input
-                            type="email"
-                            className='t1-1-input'
-                            placeholder="exemplo@exemplo.com"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <button onClick={handleRequestReset} className='t1-1-button'>Solicitar Redefinição</button>
+                            <input
+                                type="email"
+                                className='t1-1-input'
+                                placeholder="exemplo@exemplo.com"
+                                value={email}
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <button onClick={handleRequestReset} className='t1-1-button'>Solicitar Redefinição</button>
                         </div>
                         <label className='t1-1-label'>Token</label>
                         <input

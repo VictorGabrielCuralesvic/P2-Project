@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import './RegisterScreen.css'
-import LogoPC from '../../Assets/LogoPC.png'
+import './RegisterScreen.css';
+import LogoPC from '../../Assets/LogoPC.png';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { registerUser } from '../../Services/Api';
 
 const RegisterScreen = () => {
     const [fullName, setFullName] = useState('');
@@ -11,6 +11,8 @@ const RegisterScreen = () => {
     const [birthDate, setBirthDate] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
+    const [error, setError] = useState('');
+    const [success, setSuccess] = useState('');
 
     const handleRegister = async () => {
         // Lógica de registro
@@ -30,14 +32,15 @@ const RegisterScreen = () => {
         console.log(userData);
 
         try {
-            const response = await axios.post('http://localhost:5000/register', userData);
-            //setSuccess('Registro efetuado com sucesso');
+            const response = await registerUser(userData);
+            setSuccess('Registro efetuado com sucesso');
             console.log('Registro efetuado com:', response.data);
         } catch (error) {
-            //setError('erro ao registrar. Tente novamente');
-            console.error('erro ao registrar:', error);
+            setError('Erro ao registrar. Tente novamente');
+            console.error('Erro ao registrar:', error);
         }
     };
+
 
     return (
         <div className='t2'>

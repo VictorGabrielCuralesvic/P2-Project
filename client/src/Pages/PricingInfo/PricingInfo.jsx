@@ -2,7 +2,7 @@ import { useState } from 'react';
 import './PricingInfo.css';
 import ModalIng from '../../Components/PricingInfoModals/modaling';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+import { calculatePrice } from '../../Services/Api';
 import Header from '../../Components/Header/Header';
 import { FaEdit } from 'react-icons/fa';
 
@@ -14,25 +14,23 @@ const PricingInfo = () => {
     const [packagingCosts, setPackagingCosts] = useState(0);
     const [indirectCosts, setIndirectCosts] = useState(0);
     const [profitMargin, setProfitMargin] = useState(0);
-    const [suggestedPrice, setSuggestedPrice] = useState(''); // Novo estado para o preço sugerido
+    const [suggestedPrice, setSuggestedPrice] = useState('');
     const [isIngredientModalOpen, setIsIngredientModalOpen] = useState(false);
     const [isEditModalOpen, setIsEditModalOpen] = useState(false);
     const [currentIngredient, setCurrentIngredient] = useState(null);
 
     const handleAddIngredient = (ingredient) => {
         if (currentIngredient) {
-            // Edit existing ingredient
             const updatedIngredients = ingredients.map((ing) =>
                 ing.name === currentIngredient.name ? ingredient : ing
             );
             setIngredients(updatedIngredients);
         } else {
-            // Add new ingredient
             setIngredients([...ingredients, {
                 ...ingredient,
                 quantity: parseFloat(ingredient.quantity),
                 price: parseFloat(ingredient.price),
-                usedQuantity: parseFloat(ingredient.usedQuantity)
+                usedQuantity: parseFloat(ingredient.usedQuantity),
             }]);
         }
         setIsIngredientModalOpen(false);
@@ -49,19 +47,15 @@ const PricingInfo = () => {
         const token = localStorage.getItem('token');
 
         try {
-            const response = await axios.post('http://localhost:5000/calculate-price', {
+            const response = await calculatePrice(token, {
                 productName,
                 ingredients,
                 laborCosts: parseFloat(laborCosts),
                 packagingCosts: parseFloat(packagingCosts),
                 indirectCosts: parseFloat(indirectCosts),
                 margin: parseFloat(profitMargin),
-            }, {
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
             });
-            setSuggestedPrice(response.data.suggestedPrice.toFixed(2)); // Atualiza o estado com o preço sugerido
+            setSuggestedPrice(response.data.suggestedPrice.toFixed(2));
         } catch (error) {
             console.error("Error calculating price:", error);
             alert("Erro ao calcular o preço.");
@@ -70,12 +64,12 @@ const PricingInfo = () => {
 
     return (
         <div className="t9">
-            <Header/>
+            <Header />
             <div className="t9-bottom">
                 <div className='t9-wide-view'>
                     <div>
                         <h2 className='t9-title'>Nome Do Produto</h2>
-                    </div>    
+                    </div>
                     <div className='t9-wide-content'>
                         <div className="t9-ingredients-box">
                             <div className='t9-ingredients-title'>
@@ -122,7 +116,7 @@ const PricingInfo = () => {
                             <div className='t9-box-button'>
                                 <button onClick={handleCalculatePrice} className='t9-button'>Calcular Preço</button>
                                 <div>
-                                    <p className='t9-label'>Preço Sugerido:<br/> {suggestedPrice ? `R$${suggestedPrice}` : 'N/A'}</p>
+                                    <p className='t9-label'>Preço Sugerido:<br /> {suggestedPrice ? `R$${suggestedPrice}` : 'N/A'}</p>
                                 </div>
                             </div>
                         </div>

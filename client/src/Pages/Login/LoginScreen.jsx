@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { useNavigate,Link } from 'react-router-dom';
-import LogoPC from '../../Assets/LogoPC.png'
-import './LoginScreen.css'
-import axios from 'axios';
+import { useNavigate, Link } from 'react-router-dom';
+import LogoPC from '../../Assets/LogoPC.png';
+import './LoginScreen.css';
+import { login } from '../../Services/Api';
 
 const LoginScreen = () => {
     const navigate = useNavigate();
@@ -11,16 +11,14 @@ const LoginScreen = () => {
     const [error, setError] = useState('');
 
     const handleLogin = async () => {
-
         try {
-            const re = await axios.post('http://localhost:5000/login', { email, password });
-
+            const re = await login(email, password);
             const { token } = re.data;
 
-            //local storage
+            // Salva o token no localStorage
             localStorage.setItem('token', token);
-            
-            //navigate to main page
+
+            // Navega para a página principal
             navigate('/Dashboard');
         } catch (error) {
             setError('E-mail ou senha inválida');
