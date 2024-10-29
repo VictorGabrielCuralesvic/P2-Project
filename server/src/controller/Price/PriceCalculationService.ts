@@ -2,12 +2,19 @@ import prisma from "../../utils/prisma";
 
 export class PriceCalculationService {
     async createPriceCalculation(data: any) {
-        return await prisma.priceCalculation.create({ data });
+        return await prisma.priceCalculation.create({
+            data: {
+                ...data,
+                userId: typeof data.userId === 'string' ? parseInt(data.userId, 10) : data.userId,
+            },
+        });
     }
 
-    async findAllByUserId(userId: number) {
+    async findAllByUserId(userId: string | number) {
+        const parsedUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId; 
+
         return await prisma.priceCalculation.findMany({
-            where: { userId },
+            where: { userId: parsedUserId },
             include: { ingredients: true },
         });
     }

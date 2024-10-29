@@ -2,6 +2,8 @@ import { Request, Response } from "express";
 import { AuthService } from "./AuthService";
 import { UserService } from "./UserService";
 import { asyncHandler } from "../../middleware/asyncHandler";
+import { ValidationError } from "../../error/ValidationError";
+import { AuthenticationError } from "../../error/AuthenticationError";
 
 export class AuthController {
     private userService: UserService;
@@ -16,7 +18,7 @@ export class AuthController {
         const { name, email, password } = req.body;
 
         if (!name || !email || !password) {
-            return res.status(400).json({ error: "Missing required fields" });
+            throw new ValidationError("Nome, email e senha são obrigatórios");
         }
 
         const user = await this.userService.createUser(name, email, password);
@@ -29,13 +31,13 @@ export class AuthController {
         const { email, password } = req.body;
 
         if (!email || !password) {
-            return res.status(400).json({ error: "Missing required fields" });
+            throw new ValidationError("Email e senha são obrigatórios")
         }
 
         const user = await this.userService.findUserByEmail(email);
 
         if (!user || !(await this.authService.comparePassword(password, user.password))) {
-            return res.status(401).json({ error: "Invalid credentials" });
+            throw new AuthenticationError("Credenciais inválidas.");
         }
 
         const token = this.authService.generateToken(user.id.toString());
@@ -46,7 +48,7 @@ export class AuthController {
         const token = req.headers.authorization?.split(" ")[1];
 
         if (!token) {
-            return res.status(401).json({ error: "Token missing" });
+            throw new AuthenticationError("Token ausente.");
         }
 
         const decoded = this.authService.validateToken(token);

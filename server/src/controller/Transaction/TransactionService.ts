@@ -2,13 +2,15 @@ import { TransactionType } from "@prisma/client";
 import prisma from "../../utils/prisma";
 
 export class TransactionService {
-    async createTransaction(userId: number, type: string, amount: number, date: Date) {
+    async createTransaction(userId: string | number, type: string, amount: number, date: Date) {
+
+        const parsedUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
 
         const transactionType = type.toUpperCase() as TransactionType
 
         return await prisma.transaction.create({
             data: {
-                userId,
+                userId: parsedUserId,
                 type: transactionType,
                 amount,
                 date,
@@ -16,8 +18,11 @@ export class TransactionService {
         });
     }
 
-    async listTransactions(userId: number, startDate?: string, endDate?: string) {
-        let whereClause: any = { userId };
+    async listTransactions(userId: string | number, startDate?: string, endDate?: string) {
+
+        const parsedUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
+
+        let whereClause: any = { userId: parsedUserId };
 
         if (startDate && endDate) {
             whereClause.date = {
@@ -31,10 +36,13 @@ export class TransactionService {
         });
     }
 
-    async calculateBalance(userId: number, startDate: string, endDate: string) {
+    async calculateBalance(userId: string | number, startDate: string, endDate: string) {
+
+        const parsedUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
+
         const transactions = await prisma.transaction.findMany({
             where: {
-                userId,
+                userId: parsedUserId,
                 date: {
                     gte: new Date(startDate),
                     lte: new Date(endDate),
@@ -52,7 +60,10 @@ export class TransactionService {
         };
     }
 
-    async getTotalRevenueByDate(userId: number, date: string) {
+    async getTotalRevenueByDate(userId: string | number, date: string) {
+
+        const parsedUserId = typeof userId === 'string' ? parseInt(userId, 10) : userId;
+
         const startDate = new Date(date);
         const endDate = new Date(date);
         endDate.setDate(endDate.getDate() + 1);
@@ -62,7 +73,7 @@ export class TransactionService {
                 totalValue: true
             },
             where: {
-                userId,
+                userId: parsedUserId,
                 date: {
                     gte: startDate,
                     lt: endDate

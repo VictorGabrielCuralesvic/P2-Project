@@ -8,4 +8,4 @@ router.post("/register", authController.register);
 router.post("/login", authController.login);
 router.get("/validate-token", authController.validateToken);
 
-export default router;
+export default router; 

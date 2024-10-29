@@ -4,6 +4,8 @@ import { SaleService } from "./SaleService";
 import { PriceCalculationService } from "./PriceCalculationService";
 import { SaleDatabaseService } from "./SaleDatabaseService";
 import { asyncHandler } from "../../middleware/asyncHandler";
+import { ValidationError } from "../../error/ValidationError";
+import { NotFoundError } from "../../error/NotFoundError";
 
 export class PriceController {
     private priceService: PriceService;
@@ -23,7 +25,7 @@ export class PriceController {
         const { productName, ingredients, laborCosts, packagingCosts, indirectCosts, margin } = req.body;
 
         if (!ingredients || !laborCosts || !indirectCosts || !margin) {
-            return res.status(400).json({ error: "Todos os campos são obrigatórios, exceto custos de pacote." });
+            throw new ValidationError("Todos os campos são obrigatórios, exceto custos de pacote.");
         }
 
         const ingredientCosts = this.priceService.calculateIngredientCosts(ingredients);
@@ -64,13 +66,13 @@ export class PriceController {
         const { priceCalculationId, quantity, date } = req.body;
 
         if (!priceCalculationId || !quantity || !date) {
-            return res.status(400).json({ error: "Todos os campos são obrigatórios" });
+            throw new ValidationError("Todos os campos são obrigatórios.");
         }
 
         const priceCalculation = await this.priceCalculationService.findById(priceCalculationId);
 
         if (!priceCalculation) {
-            return res.status(404).json({ error: "Cálculo de preço não encontrado" });
+            throw new NotFoundError("Cálculo de preço não encontrado.");
         }
 
         const totalValue = this.saleService.calculateTotalValue(priceCalculation.suggestedPrice, quantity);
