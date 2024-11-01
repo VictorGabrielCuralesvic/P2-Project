@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
 import { useIngredient } from '../../Hooks/useIngredient';
 
 const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
