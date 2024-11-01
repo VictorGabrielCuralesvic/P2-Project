@@ -1,28 +1,11 @@
 import { useState, useEffect } from 'react';
+import { useIngredient } from '../../Hooks/useIngredient';
 
 const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
-    const [name, setName] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [price, setPrice] = useState('');
-    const [usedQuantity, setUsedQuantity] = useState('');
-
-    useEffect(() => {
-        if (ingredientToEdit) {
-            setName(ingredientToEdit.name);
-            setQuantity(ingredientToEdit.quantity);
-            setPrice(ingredientToEdit.price);
-            setUsedQuantity(ingredientToEdit.usedQuantity);
-        }
-    }, [ingredientToEdit]);
-
-    const handleSave = () => {
-        onAddIngredient({
-            name,
-            quantity: parseFloat(quantity),
-            price: parseFloat(price),
-            usedQuantity: parseFloat(usedQuantity)
-        });
-    };
+    const {
+        name, setName, quantity, setQuantity, price, setPrice, usedQuantity, setUsedQuantity, handleSave
+    } = useIngredient(ingredientToEdit);
+    
 
     return (
         <div className="t9-1-back">
@@ -63,7 +46,7 @@ const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
                     />
                     <div className='t9-1-button-box'>
                         <button onClick={onClose} className='t9-1-cancel'>Cancelar</button>
-                        <button onClick={handleSave} className='t9-1-save'>Salvar</button>
+                        <button onClick={() => handleSave(onAddIngredient)} className='t9-1-save'>Salvar</button>
                     </div>
                 </div>
             </div>
