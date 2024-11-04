@@ -1,0 +1,65 @@
+/*PricingModal = t7-1*/
+
+.t7-1-back {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.144);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.t7-1-modal {
+  background-color: white;
+  width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+}
+
+.t7-1-input{
+  width: 100%;
+  border-radius: 20px;
+  border: 0;
+  height: 40px;
+  box-shadow: inset 11px 10px 10px rgba(0, 0, 0, 0.1);
+  padding-left: 20px;
+  padding-right: 20px;
+  background-color: #dff7e2;
+}
+
+.t7-1-save{
+  background-color: #00D09E;
+  color: black;
+  font-size:20px;
+  font-weight: bold;
+  padding: 10px 40px 10px 40px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.t7-1-cancel{
+  background-color: #DFF7E2;
+  color: black;
+  font-size:20px;
+  font-weight: bold;
+  padding: 10px 40px 10px 40px;
+  border-radius: 50px;
+  border: none;
+  box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.t7-1-button-box{
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+  justify-content: space-between;
+  width: 100%;
+}

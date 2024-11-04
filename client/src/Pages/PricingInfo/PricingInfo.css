@@ -1,0 +1,224 @@
+/*PricingInfo = t9*/
+
+.t9 {
+    background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.t9-bottom {
+    background-color: #f1fff3;
+    min-height: 80vh;
+    border-radius: 70px 70px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+} 
+
+.t9-title {
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.t9-ingredients-box{
+    display: flex;
+    flex-direction: column;
+}
+
+.t9-ingredients-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+}
+
+.t9-ingredient{
+    display: flex;
+    background-color: #DFF7E2;
+    padding: 10px;
+    border-radius: 15px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.t9-ingredient-box{
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    overflow-y: auto; 
+    border-bottom: 1px solid rgba(128, 128, 128, 0.318);
+   }
+
+.t9-ingredient-text{
+ width: 100%;
+}
+
+.t9-item-title{
+    font-weight: 600;
+    padding-bottom: 10px;
+}
+
+.t9-item-list{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.t9-icon{
+    background-color: #F1FFF3;
+    padding: 10px;
+    border-radius: 10px;
+    margin-left: 20px;
+    box-shadow: 0px 3px 2px 1px rgba(0, 0, 0, 0.1);
+}
+
+.t9-input {
+    width: 100%;
+    border-radius: 20px;
+    border: 0;
+    height: 40px;
+    box-shadow: inset 11px 10px 10px rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #dff7e2;
+}
+
+.t9-button {
+    background-color: #00D09E;
+    font-size:20px;
+    font-weight: bold;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+}
+
+.t9-box-button {
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row-reverse;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.t9-costs-section {
+padding-top: 10px;
+}
+
+.t9-label {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 10px;
+    font-weight: bold;
+  }
+
+/*modaling = t9-1*/
+
+.t9-1-back {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.144);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+.t9-1-modal {
+    background-color: white;
+    width: 400px;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: center;
+}
+
+.t9-1-form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.t9-1-input{
+    width: 100%;
+    border-radius: 20px;
+    border: 0;
+    height: 40px;
+    box-shadow: inset 11px 10px 10px rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    padding-right: 20px;
+    background-color: #dff7e2;
+  }
+
+  .t9-1-save{
+    background-color: #00D09E;
+    color: black;
+    font-size:20px;
+    font-weight: bold;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+  }
+  
+  .t9-1-cancel{
+    background-color: #DFF7E2;
+    color: black;
+    font-size:20px;
+    font-weight: bold;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+  }
+
+  .t9-1-button-box{
+    display: flex;
+    flex-direction: row;
+    align-content: space-around;
+    justify-content: space-between;
+    width: 100%;
+    padding-top: 20px;
+  }
+
+  @media (min-width: 768px) {
+    .t9-wide-view {
+        display: flex;
+        flex-direction: column;
+    }
+    .t9-wide-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .t9-ingredient-box{
+        display: flex;
+        flex-direction: column;
+        height: 75vh;
+        width: 40vW;
+        overflow-y: auto; 
+        border-bottom: 0px solid rgba(128, 128, 128, 0.318);
+       }
+    .t9-costs-section {
+        padding-top: 10px;
+        height: 75vh;
+        width: 40vw;
+        }
+    .t9-wide-border {
+        height: 75vh;
+        width: 1px;
+        margin-top: 30px;
+        border-right: 1px solid rgba(128, 128, 128, 0.318);
+
+    }
+  }

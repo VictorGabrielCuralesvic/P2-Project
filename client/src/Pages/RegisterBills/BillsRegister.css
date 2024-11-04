@@ -1,0 +1,155 @@
+/*Tela Balanço = t12*/
+
+.t12 {
+    background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+  }
+
+.t12-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 70px 70px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.t12-resume{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+    padding-bottom: 50px;
+}
+
+.t12-resume-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.t12-resume-money-l {
+    font-size:x-large;
+    font-weight: 600;
+}
+
+.t12-resume-money-r {
+    font-size:x-large;
+    font-weight: 600;
+    color: #0068FF;
+}
+
+.t12-button-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.t12-button {
+    background-color: #00D09E;
+    font-size:20px;
+    font-weight: bold;
+    width: 80%;
+    padding: 10px 40px 10px 40px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.t12-button:hover {
+    cursor: pointer;
+}
+
+.t12-graphics {
+    padding-top: 50px;
+}
+
+@media (min-width: 768px) {
+    .t12-bottom {
+        background-color: #f1fff3;
+        min-height: 100vh;
+        border-radius: 0px 0px 0px 0px;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    .t12-graphics {
+        padding-top: 0px;
+        width: 50vw;
+    }
+    .t12-media-l{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+    }
+    .t12-button-box{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    .t12-button {
+        background-color: #00D09E;
+        font-size: 16px;
+        font-weight: bold;
+        width: 100%;
+        border-radius: 50px;
+        height: 100%;
+        border: none;
+        box-shadow: 0px 6px 5px 3px rgba(0, 0, 0, 0.1);
+        margin-bottom: 0px;
+        text-align: center;
+        margin-right: 10px;
+    }
+  }
+
+  /* BillsRegister.css */
+
+.t12-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.t12-modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.t12-modal-content input,
+.t12-modal-content select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+.t12-modal-content button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #00D09E;
+    color: white;
+    font-size: 1em;
+    margin: 5px;
+}
+
+.t12-modal-content button:hover {
+    background-color: #00a97f;
+}

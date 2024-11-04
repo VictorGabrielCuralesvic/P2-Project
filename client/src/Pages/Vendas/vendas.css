@@ -1,0 +1,230 @@
+/* Tela Vendas = t13 */
+
+.t13 {
+    background-color: #00d09e;
+    font-family: "Poppins-SemiBold", Helvetica;
+    display: flex;
+    flex-direction: column;
+}
+
+.t13-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 70px 70px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.t13-title {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    font-size: 1.5em;
+    font-weight: bold;
+}
+
+.t13-vendas {
+    background-color: #f1fff3;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0px 6px 5px rgba(0, 0, 0, 0.1);
+}
+
+.t13-sales-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #e7ffed;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 5px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.t13-sales-item p {
+    margin: 5px 0;
+    font-size: 1em;
+    flex-grow: 1;
+    font-weight: 500;
+    color: #333;
+}
+
+.t13-sales-item button {
+    background-color: #00D09E;
+    color: #fff;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+.t13-sales-item button:hover {
+    cursor: pointer;
+    background-color: #00a97f;
+}
+
+.t13-sales-item .register-button {
+    background-color: #0068FF;
+    width: 500;
+    height: auto;
+    padding: 5px 10px;
+    margin: 15px;
+    margin-right: 10px;
+    border-radius: 20px;
+    font-size: 0.9em;
+}
+
+.t13-sales-item .register-button:hover {
+    background-color: #0051cc;
+}
+
+@media (min-width: 768px) {
+    .t13-bottom {
+        background-color: #f1fff3;
+        min-height: 100vh;
+        border-radius: 0px 0px 0px 0px;
+        padding: 20px;
+        overflow-y: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .t13-vendas {
+        width: 50%;
+    }
+}
+
+.t13-sales-item {
+    background-color: #E5FFF5;
+    border-radius: 15px;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para o texto do produto */
+.t13-sales-item p {
+    margin: 0;
+    font-size: 1em;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Estilos para o botão */
+.t13-sales-item button {
+    background-color: #00D09E;
+    color: #fff;
+    font-size: 1em;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin: 0 5px;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para o botão de registrar venda */
+.t13-sales-item .register-button {
+    background-color: #0068FF;
+}
+
+/* Adicionar um hover para os botões */
+.t13-sales-item button:hover {
+    background-color: #00a97f;
+}
+
+/* Hover específico para o botão de registrar venda */
+.t13-sales-item .register-button:hover {
+    background-color: #0051cc;
+}
+
+.t13-new-sale-button {
+    background-color: #00D09E;
+    color: white;
+    font-size: 1em;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 20px;
+}
+
+.t13-new-sale-button:hover {
+    background-color: #00a97f;
+}
+
+.t13-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.t13-modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 400px;
+    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.t13-modal-content h2 {
+    margin-bottom: 20px;
+}
+
+.t13-modal-content input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.t13-modal-content button {
+    background-color: #00D09E;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.t13-modal-content button:hover {
+    background-color: #00a97f;
+}
+
+.t13-input-quantity {
+    width: 60px;
+    padding: 10px;
+    margin-bottom: 50px;
+    margin: 0 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.t13-quantity-control {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+}

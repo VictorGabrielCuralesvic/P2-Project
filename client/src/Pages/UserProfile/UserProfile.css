@@ -1,0 +1,49 @@
+/*UserProfile = t5*/
+
+.t5 {
+  background-color: #00d09e;
+  font-family: "Poppins-SemiBold", Helvetica;
+  display: flex;
+  flex-direction: column;
+}
+
+.t5-bottom {
+  background-color: #f1fff3;
+  min-height: 100vh;
+  border-radius: 70px 70px 0px 0px;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.t5-title {
+  padding-bottom: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.t5-pages {
+  display: flex;
+  align-items: center;
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+.t5-pages div {
+  margin-right: 10px;
+}
+
+@media (min-width: 768px) {
+  .t5-wide {
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .t5-bottom {
+    background-color: #f1fff3;
+    min-height: 100vh;
+    border-radius: 0px 0px 0px 0px;
+    padding: 20px;
+    overflow-y: auto;
+  }
+}

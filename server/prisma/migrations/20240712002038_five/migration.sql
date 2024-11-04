@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE `sale` ADD COLUMN `totalVlue` DOUBLE NOT NULL DEFAULT 0.0;

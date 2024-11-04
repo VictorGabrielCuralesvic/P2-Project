@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-} 
+}
 
 datasource db {
   provider = "mysql"
@@ -14,72 +14,83 @@ datasource db {
 }
 
 model User {
-  id                Int          @id @default(autoincrement())
-  email             String       @unique
+  id                Int                @id @default(autoincrement())
+  email             String             @unique
   password          String
   name              String
-  createdAt         DateTime     @default(now())
-  updatedAt         DateTime     @updatedAt
+  createdAt         DateTime           @default(now())
+  updatedAt         DateTime           @updatedAt
   transactions      Transaction[]
   priceCalculations PriceCalculation[]
-  reports           Report[]     @relation("UserReports")
+  reports           Report[]           @relation("UserReports")
+  Sale              Sale[]
 }
 
 model Transaction {
-  id        Int       @id @default(autoincrement())
-  user      User      @relation(fields: [userId], references: [id])
+  id        Int             @id @default(autoincrement())
+  user      User            @relation(fields: [userId], references: [id])
   userId    Int
   type      TransactionType
   amount    Float
-  category  String
-  notes     String?
-  date      DateTime  @default(now())
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  date      DateTime        @default(now())
 }
 
 model PriceCalculation {
-  id            Int       @id @default(autoincrement())
-  user          User      @relation(fields: [userId], references: [id])
-  userId        Int
-  productName   String
+  id              Int          @id @default(autoincrement())
+  user            User         @relation(fields: [userId], references: [id])
+  userId          Int
+  productName     String
   ingredientCosts Float
-  laborCosts    Float     @default(0.0)
-  packagingCosts Float?
-  indirectCosts Float     @default(0.0)
-  margin        Float
-  totalCost     Float     @default(0.0)
-  suggestedPrice Float
-  manualPrice   Float?
-  createdAt     DateTime  @default(now())
-  updatedAt     DateTime  @updatedAt
+  laborCosts      Float        @default(0.0)
+  packagingCosts  Float?
+  indirectCosts   Float        @default(0.0)
+  margin          Float
+  totalCost       Float        @default(0.0)
+  suggestedPrice  Float
+  ingredients     Ingredient[]
+  Sale            Sale[]
+}
+
+model Ingredient {
+  id                 Int              @id @default(autoincrement())
+  name               String
+  quantity           Float
+  price              Float
+  usedQuantity       Float
+  priceCalculationId Int
+  priceCalculation   PriceCalculation @relation(fields: [priceCalculationId], references: [id])
 }
 
 model FinancialTip {
-  id        Int       @id @default(autoincrement())
+  id        Int      @id @default(autoincrement())
   content   String
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
 }
 
 model Report {
-  id        Int       @id @default(autoincrement())
-  user      User      @relation("UserReports", fields: [userId], references: [id])
+  id        Int        @id @default(autoincrement())
+  user      User       @relation("UserReports", fields: [userId], references: [id])
   userId    Int
   type      ReportType
   startDate DateTime
   endDate   DateTime
   data      Json
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
 }
 
 model PasswordReset {
-  id Int @id @default(autoincrement())
-  email String
-  token String
-  createdAt DateTime @default(now())
-  expiresAt DateTime
+  id        Int      @id @default(autoincrement())
+  email     String
+  token     String
+}
+
+model Sale {
+  id                 Int              @id @default(autoincrement())
+  user               User             @relation(fields: [userId], references: [id])
+  userId             Int
+  priceCalculation   PriceCalculation @relation(fields: [priceCalculationId], references: [id])
+  priceCalculationId Int
+  quantity           Int
+  totalValue          Float            @default(0.0)
+  date               DateTime         @default(now())
 }
 
 enum TransactionType {
