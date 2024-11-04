@@ -16,14 +16,5 @@ export const useIngredient = (ingredientToEdit) => {
         }
     }, [ingredientToEdit]);
 
-    const handleSave = (onAddIngredient) => {
-        onAddIngredient({
-            name,
-            quantity: parseFloat(quantity),
-            price: parseFloat(price),
-            usedQuantity: parseFloat(usedQuantity)
-        });
-    };
-
-    return { name, setName, quantity, setQuantity, price, setPrice, usedQuantity, setUsedQuantity, handleSave };
+    return { name, setName, quantity, setQuantity, price, setPrice, usedQuantity, setUsedQuantity };
 }
