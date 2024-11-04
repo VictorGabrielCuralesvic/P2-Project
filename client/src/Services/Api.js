@@ -7,6 +7,7 @@ const api = axios.create({
 
 // Função para registrar um usuário
 export const registerUser = async (userData) => {
+    console.log("userdata"+userData)
     return await api.post('/register', userData);
 };
 
