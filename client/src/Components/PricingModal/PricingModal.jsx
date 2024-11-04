@@ -3,8 +3,12 @@ import './PricingModal.css';
 import { useProduct } from '../../Hooks/useProduct';
 
 const PricingModal = ({ onAddProduct, onClose }) => {
-    const { productName, setProductName, handleSave } = useProduct();
-    
+    const { productName, setProductName } = useProduct();
+
+    const handleSave = (onAddProduct) => {
+        const newProduct = { productName, suggestedPrice: null };
+        onAddProduct(newProduct);
+    };
 
     return (
         <div className='t7-1-back'>
