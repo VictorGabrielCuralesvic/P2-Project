@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { calculatePrice } from '../../Services/Api';
 import Header from '../../Components/Header/Header';
 import { FaEdit } from 'react-icons/fa';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 
 const PricingInfo = () => {
     const navigate = useNavigate();
@@ -119,6 +120,7 @@ const PricingInfo = () => {
                                     <p className='t9-label'>Preço Sugerido:<br /> {suggestedPrice ? `R$${suggestedPrice}` : 'N/A'}</p>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                 </div>

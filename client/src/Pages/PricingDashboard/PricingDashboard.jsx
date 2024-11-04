@@ -3,6 +3,7 @@ import './PricingDashboard.css';
 import PricingModal from '../../Components/PricingModal/PricingModal.jsx';
 import { getProducts } from '../../Services/Api.js'; 
 import { useNavigate } from 'react-router-dom';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import Header from '../../Components/Header/Header.jsx';
 import { FaPlus } from 'react-icons/fa';
 
@@ -54,6 +55,7 @@ const PricingDashboard = () => {
                 </div>
                 {isModalOpen && <PricingModal onAddProduct={handleAddProduct} onClose={() => setIsModalOpen(false)} />}
             </div>
+            <BottomNavigation/>
         </div>
     );
 };
