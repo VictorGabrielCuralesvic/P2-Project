@@ -18,6 +18,7 @@ export class AuthController {
         const { name, email, password } = req.body;
 
         if (!name || !email || !password) {
+            console.log(name, email, password);
             throw new ValidationError("Nome, email e senha são obrigatórios");
         }
 
