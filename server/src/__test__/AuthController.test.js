@@ -27,14 +27,12 @@ describe("AuthController", () => {
 
     describe("register", () => {
         it("should register a user and return a token", async () => {
-            // Mock input data
             mockRequest.body = {
                 name: "Test User",
                 email: "test@example.com",
                 password: "password123"
             };
 
-            // Mock UserService and AuthService methods
             const mockUser = { id: 50, ...mockRequest.body };
             UserService.prototype.createUser.mockResolvedValue(mockUser);
             AuthService.prototype.generateToken.mockReturnValue("fake-jwt-token");
@@ -55,7 +53,7 @@ describe("AuthController", () => {
         });
 
         it("should throw a ValidationError if name, email, or password is missing", async () => {
-            mockRequest.body = { email: "test@example.com" }; // Missing name and password
+            mockRequest.body = { email: "test@example.com" };
 
             await expect(authController.register(mockRequest, mockResponse, nextFunction)).rejects.toThrow(ValidationError);
             expect(UserService.prototype.createUser).not.toHaveBeenCalled();
@@ -88,7 +86,7 @@ describe("AuthController", () => {
         });
 
         it("should throw a ValidationError if email or password is missing", async () => {
-            mockRequest.body = { email: "test@example.com" }; // Missing password
+            mockRequest.body = { email: "test@example.com" };
 
             await expect(authController.login(mockRequest, mockResponse, nextFunction)).rejects.toThrow(ValidationError);
             expect(UserService.prototype.findUserByEmail).not.toHaveBeenCalled();
