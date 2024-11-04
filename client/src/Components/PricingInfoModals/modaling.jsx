@@ -3,10 +3,18 @@ import { useIngredient } from '../../Hooks/useIngredient';
 
 const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
     const {
-        name, setName, quantity, setQuantity, price, setPrice, usedQuantity, setUsedQuantity, handleSave
+        name, setName, quantity, setQuantity, price, setPrice, usedQuantity, setUsedQuantity
     } = useIngredient(ingredientToEdit);
-    
 
+    const handleSave = (onAddIngredient) => {
+        onAddIngredient({
+            name,
+            quantity: parseFloat(quantity),
+            price: parseFloat(price),
+            usedQuantity: parseFloat(usedQuantity)
+        });
+    };
+    
     return (
         <div className="t9-1-back">
             <div className='t9-1-modal'>
