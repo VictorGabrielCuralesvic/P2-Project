@@ -6,7 +6,7 @@ import './ProfileEdit.css';
 const ProfileEdit = () => {
   return (
     <div className='t6'>
-      <Header/>
+      <Header />
       <div className='t6-bottom'>
         <h1 className='t6-title'>Nome De Usuário</h1>
         <div>

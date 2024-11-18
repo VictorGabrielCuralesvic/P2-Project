@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginScreen from './Pages/Login/LoginScreen';
 import RegisterScreen from './Pages/Register/RegisterScreen';
 import ResetPasswordScreen from './Pages/ResetPass/ResetPasswordScreen';
-import ProfileEdit from './Pages/ProfileEdit/ProfileEdit';
+import ProfileEdit from './Pages/UserProfileEdit/ProfileEdit';
 import UserProfile from './Pages/UserProfile/UserProfile';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import PricingDashboard from './Pages/PricingDashboard/PricingDashboard';
