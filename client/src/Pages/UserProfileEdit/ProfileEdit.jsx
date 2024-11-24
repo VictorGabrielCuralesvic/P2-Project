@@ -1,9 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../Components/Header/Header';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import './ProfileEdit.css';
 
 const ProfileEdit = () => {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+
+  const handleSaveProfile = async () => {
+    try {
+      const token = localStorage.getItem("token"); // Recupera o token armazenado
+      const response = await fetch("http://localhost:3000/user", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify({ name, email }),
+      });
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || "Erro ao atualizar perfil");
+      }
+
+      const data = await response.json();
+      console.log("Perfil atualizado:", data.user);
+      alert("Perfil atualizado com sucesso!");
+    } catch (error) {
+      console.error(error);
+      alert(error.message || "Erro ao atualizar perfil");
+    }
+  };
+
+
   return (
     <div className='t6'>
       <Header />
@@ -16,25 +46,20 @@ const ProfileEdit = () => {
             <input
               type="text"
               placeholder="Seu Nome Completo"
-              value={'none'}
-              className='t6-input'
-            />
-            <label className='t6-label'>Número</label>
-            <input
-              type="text"
-              placeholder="(XX) XXXXX-XXXX"
-              value={'none'}
+              value={name}
+              onChange={(e) => setName(e.target.value)}
               className='t6-input'
             />
             <label className='t6-label'>E-Mail</label>
             <input
               type="text"
               placeholder="seuemail@email.com"
-              value={'none'}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
               className='t6-input'
             />
             <div className='t6-button-box'>
-              <button type="submit" className='t6-button'>Atualizar Conta</button>
+              <button type="submit" className='t6-button' onClick={handleSaveProfile}>Atualizar Conta</button>
             </div>
           </div>
         </div>
