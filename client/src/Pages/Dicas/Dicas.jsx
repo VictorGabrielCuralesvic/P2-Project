@@ -10,13 +10,37 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
+    // Exemplos fixos de notícias
+    const exampleArticles = [
+        {
+            title: '5 Dicas para Economizar no Supermercado',
+            description:
+                'Aprenda como economizar com estratégias simples e práticas no dia a dia. Compare preços, aproveite promoções e reduza seus gastos mensais!',
+            publishedAt: '2024-11-24',
+            url: 'https://example.com/economizar-supermercado',
+        },
+        {
+            title: 'Planejamento Financeiro: Por onde começar?',
+            description:
+                'Descubra as melhores estratégias para organizar suas finanças pessoais e alcançar seus objetivos financeiros.',
+            publishedAt: '2024-11-23',
+            url: 'https://example.com/planejamento-financeiro',
+        },
+    ];
+
+    // Função para carregar notícias da API
     useEffect(() => {
         const loadArticles = async () => {
             try {
-                const response = await fetchFinanceNews();
-                setArticles(response.data);
+                const response = await fetchFinanceNews(); // Chamada para a API
+                if (response.data && response.data.articles && response.data.articles.length > 0) {
+                    setArticles(response.data.articles); // Ajustado para acessar a lista de artigos
+                } else {
+                    setArticles(exampleArticles); // Mostra os exemplos se não houver artigos
+                }
             } catch (err) {
-                setError('Erro ao carregar as notícias. Tente novamente mais tarde.');
+                setError('Erro ao carregar as notícias. Exibindo exemplos.');
+                setArticles(exampleArticles); // Exibe os exemplos em caso de erro
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -49,9 +73,9 @@ const Dashboard = () => {
                                     })}
                                 </p>
                                 <a
-                                    href={article.url} 
+                                    href={article.url}
                                     target="_blank" // Abre em nova guia
-                                    rel="noopener noreferrer" 
+                                    rel="noopener noreferrer"
                                     className="t4-news-link"
                                 >
                                     <h2 className='t4-news-title'>{article.title}</h2>
