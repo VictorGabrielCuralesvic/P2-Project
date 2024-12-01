@@ -11,15 +11,16 @@ export class UserController {
     }
 
     updateUser = asyncHandler(async (req: Request, res: Response) => {
-        const userId = req.user.userId; 
+        const userId = req.user.userId;
         const { name, email } = req.body;
-
-        if (!name || !email) {
-            throw new ValidationError("Nome e email são obrigatórios.");
+    
+        if (!name && !email) {
+            throw new ValidationError("É necessário enviar pelo menos um campo para atualizar.");
         }
-
-        const updatedUser = await this.userService.updateUser(userId, name, email);
-
+    
+        const updatedUser = await this.userService.updateUser(userId, { name, email });
+    
         return res.status(200).json({ user: updatedUser });
     });
+    
 }
