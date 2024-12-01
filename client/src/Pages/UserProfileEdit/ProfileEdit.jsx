@@ -10,13 +10,17 @@ const ProfileEdit = () => {
   const handleSaveProfile = async () => {
     try {
       const token = localStorage.getItem("token");
+      const updates = {};
+      if (name) updates.name = name;
+      if (email) updates.email = email;
+  
       const response = await fetch("http://localhost:5000/User", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify(updates),
       });
   
       if (!response.ok) {
@@ -37,6 +41,7 @@ const ProfileEdit = () => {
       alert(error.message || "Erro ao atualizar perfil");
     }
   };
+  
   
 
   return (
