@@ -9,8 +9,8 @@ const ProfileEdit = () => {
 
   const handleSaveProfile = async () => {
     try {
-      const token = localStorage.getItem("token"); // Recupera o token armazenado
-      const response = await fetch("http://localhost:3000/user", {
+      const token = localStorage.getItem("token");
+      const response = await fetch("http://localhost:5000/User", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -18,21 +18,26 @@ const ProfileEdit = () => {
         },
         body: JSON.stringify({ name, email }),
       });
-
+  
       if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Erro ao atualizar perfil");
+        const contentType = response.headers.get("content-type");
+        if (contentType && contentType.includes("application/json")) {
+          const errorData = await response.json();
+          throw new Error(errorData.error || "Erro ao atualizar perfil");
+        } else {
+          throw new Error(`Erro inesperado: ${response.status}`);
+        }
       }
-
+  
       const data = await response.json();
-      console.log("Perfil atualizado:", data.user);
       alert("Perfil atualizado com sucesso!");
+      console.log("Perfil atualizado:", data.user);
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
       alert(error.message || "Erro ao atualizar perfil");
     }
   };
-
+  
 
   return (
     <div className='t6'>
