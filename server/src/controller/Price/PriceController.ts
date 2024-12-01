@@ -6,18 +6,21 @@ import { SaleDatabaseService } from "./SaleDatabaseService";
 import { asyncHandler } from "../../middleware/asyncHandler";
 import { ValidationError } from "../../error/ValidationError";
 import { NotFoundError } from "../../error/NotFoundError";
+import { TransactionService } from "../Transaction/TransactionService";
 
 export class PriceController {
     private priceService: PriceService;
     private saleService: SaleService;
     private priceCalculationService: PriceCalculationService;
     private saleDatabaseService: SaleDatabaseService;
+    private transactionService: TransactionService;
 
     constructor() {
         this.priceService = new PriceService();
         this.saleService = new SaleService();
         this.priceCalculationService = new PriceCalculationService();
         this.saleDatabaseService = new SaleDatabaseService();
+        this.transactionService = new TransactionService();
     }
 
     calculatePrice = asyncHandler(async (req: Request, res: Response) => {
@@ -51,6 +54,13 @@ export class PriceController {
                 })),
             },
         });
+
+        await this.transactionService.createTransaction(
+            userId,
+            'EXPENSE',
+            totalCost,
+            new Date()
+        );
 
         return res.status(201).json(priceCalculation);
     });

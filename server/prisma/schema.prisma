@@ -47,6 +47,7 @@ model PriceCalculation {
   margin          Float
   totalCost       Float        @default(0.0)
   suggestedPrice  Float
+  date            DateTime     @default(now())
   ingredients     Ingredient[]
   Sale            Sale[]
 }
