@@ -8,8 +8,9 @@ export class UserService {
         this.authService = new AuthService();
     }
 
+    // Criar usuário
     async createUser(name: string, email: string, password: string) {
-        const userExists = await prisma.user.findUnique({ where: { email }});
+        const userExists = await prisma.user.findUnique({ where: { email } });
 
         if (userExists) {
             throw new Error("User already exists");
@@ -22,13 +23,14 @@ export class UserService {
         });
     }
 
+    // Atualizar usuário
     async updateUser(id: number, data: { name?: string; email?: string }) {
         const userExists = await prisma.user.findUnique({ where: { id } });
-    
+
         if (!userExists) {
             throw new Error("User not found");
         }
-    
+
         if (data.email && data.email !== userExists.email) {
             const emailExists = await prisma.user.findUnique({
                 where: { email: data.email },
@@ -37,14 +39,26 @@ export class UserService {
                 throw new Error("O email já está em uso.");
             }
         }
-    
+
         return await prisma.user.update({
             where: { id },
             data,
         });
     }
-    
 
+    // Buscar informações do usuário pelo ID
+    async getUserById(id: number) {
+        return await prisma.user.findUnique({
+            where: { id },
+            select: {
+                id: true,
+                name: true,
+                email: true,
+            },
+        });
+    }
+
+    // Buscar usuário pelo email
     async findUserByEmail(email: string) {
         return await prisma.user.findUnique({ where: { email } });
     }
