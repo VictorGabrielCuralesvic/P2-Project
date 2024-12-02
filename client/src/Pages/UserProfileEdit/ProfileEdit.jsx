@@ -7,6 +7,7 @@ const ProfileEdit = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
+
   const handleSaveProfile = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -48,7 +49,7 @@ const ProfileEdit = () => {
     <div className='t6'>
       <Header />
       <div className='t6-bottom'>
-        <h1 className='t6-title'>Nome De Usuário</h1>
+        <h1 className='t6-title'>Editar Perfil</h1>
         <div>
           <h2>Editar Conta:</h2>
           <div className='t6-form'>
