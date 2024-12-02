@@ -87,3 +87,8 @@ export const registerSale = async (saleData, token) => {
         }
     });
 };
+
+// Função para buscar notícias financeiras
+export const fetchFinanceNews = async () => {
+    return await api.get('/news/finance');
+};
