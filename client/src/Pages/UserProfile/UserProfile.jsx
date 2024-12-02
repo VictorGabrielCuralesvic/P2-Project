@@ -48,20 +48,20 @@ const UserProfile = () => {
                             <div><img src={IconProfile} alt="Editar Perfil"/></div>
                             <span>Editar Perfil</span>
                         </div>
-                        <div className='t5-pages'>
+                        {/* <div className='t5-pages'>
                             <div><img src={IconSecurity} alt="Segurança"/></div>
                             <span>Segurança</span>
                         </div>
                         <div className='t5-pages'>
                             <div><img src={IconSettings} alt="Configurações"/></div>
                             <span>Configurações</span>
-                        </div>
+                        </div> */}
                     </div>
                     <div>
-                        <div className='t5-pages'>
+                        {/* <div className='t5-pages'>
                             <div><img src={IconHelp} alt="Ajuda"/></div>
                             <span>Ajuda</span>
-                        </div>
+                        </div> */}
                         <div className='t5-pages' onClick={() => navigate('/')}>
                             <div><img src={IconLogout} alt="Sair Da Conta"/></div>
                             <span>Sair Da Conta</span>

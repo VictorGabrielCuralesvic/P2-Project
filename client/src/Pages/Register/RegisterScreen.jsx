@@ -106,9 +106,9 @@ const RegisterScreen = () => {
                             <Link to="/" className='t2-link'>já possui uma conta?</Link>
                         </div>
                         <div className='t2-box-a'>
-                            <p>
+                            {/* <p>
                                 Se cadastrando, você concorda com os <a href="#">Termos de Uso</a> e <a href="#">Política de Privacidade</a>.
-                            </p>
+                            </p> */}
                             
                         </div> 
                     </div>

@@ -19,9 +19,9 @@ const BillsRegister = () => {
 
     const navigate = useNavigate();
 
-    const handleVendas = () => {
+ /*    const handleVendas = () => {
         navigate('/vendas');
-    };
+    }; */
 
     const handleOpenModal = () => {
         setShowModal(true);
@@ -92,7 +92,7 @@ const BillsRegister = () => {
                     </div>
                     <div className="t12-button-box">
                         <button className="t12-button" onClick={handleOpenModal}>Anotar Despesas</button>
-                        <button className="t12-button" onClick={handleVendas}>Vendas</button>
+                        {/* <button className="t12-button" onClick={handleVendas}>Vendas</button> */}
                     </div>
                     <div className="t12-date-filter">
                         <label>

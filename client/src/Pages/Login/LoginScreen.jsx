@@ -57,7 +57,7 @@ const LoginScreen = () => {
                             <button onClick={handleLogin} className='t1-button'>Entrar</button>
                         </div>
                         <div className='t1-box-a'>
-                            <Link to="/ResetPassword" className='t1-link'>Esqueceu a senha?</Link>
+                            {/* <Link to="/ResetPassword" className='t1-link'>Esqueceu a senha?</Link> */}
                             <Link to="/Register" className='t1-link'>Novo usuário?</Link>                          
                         </div>
                     </div>
