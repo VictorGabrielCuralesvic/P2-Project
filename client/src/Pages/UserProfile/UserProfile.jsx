@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './UserProfile.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import Header from '../../Components/Header/Header';
@@ -11,12 +11,37 @@ import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
     const navigate = useNavigate();
+    const [name, setName] = useState('');
+
+    useEffect(() => {
+        const fetchUser = async () => {
+            try {
+                const token = localStorage.getItem("token");
+                const response = await fetch("http://localhost:5000/user", {
+                    method: "GET",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    setName(data.name);
+                } else {
+                    console.error('Erro ao buscar o usuário:', response.statusText);
+                }
+            } catch (error) {
+                console.error('Erro ao buscar os dados do usuário', error);
+            }
+        };
+
+        fetchUser();
+    }, []);
 
     return (
         <div className='t5'>
             <Header showIcon={true} />
             <div className='t5-bottom'>
-                <h1 className='t5-title'>Nome De Usuário</h1>
+                <h1 className='t5-title'>Bem vindo(a) {name}</h1>
                 <div className='t5-wide'>
                     <div>
                         <div className='t5-pages' onClick={() => navigate('/ProfileEdit')}>
