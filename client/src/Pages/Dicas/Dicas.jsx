@@ -10,7 +10,7 @@ const Dashboard = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // Exemplos fixos de notícias
+   
     const exampleArticles = [
         {
             title: '5 Dicas para Economizar no Supermercado',
@@ -28,19 +28,18 @@ const Dashboard = () => {
         },
     ];
 
-    // Função para carregar notícias da API
     useEffect(() => {
         const loadArticles = async () => {
             try {
-                const response = await fetchFinanceNews(); // Chamada para a API
+                const response = await fetchFinanceNews(); 
                 if (response.data && response.data.articles && response.data.articles.length > 0) {
-                    setArticles(response.data.articles); // Ajustado para acessar a lista de artigos
+                    setArticles(response.data.articles); 
                 } else {
-                    setArticles(exampleArticles); // Mostra os exemplos se não houver artigos
+                    setArticles(exampleArticles); 
                 }
             } catch (err) {
                 setError('Erro ao carregar as notícias. Exibindo exemplos.');
-                setArticles(exampleArticles); // Exibe os exemplos em caso de erro
+                setArticles(exampleArticles); 
                 console.error(err);
             } finally {
                 setLoading(false);
@@ -74,7 +73,7 @@ const Dashboard = () => {
                                 </p>
                                 <a
                                     href={article.url}
-                                    target="_blank" // Abre em nova guia
+                                    target="_blank" 
                                     rel="noopener noreferrer"
                                     className="t4-news-link"
                                 >
