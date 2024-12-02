@@ -22,6 +22,29 @@ export class UserService {
         });
     }
 
+    async updateUser(id: number, data: { name?: string; email?: string }) {
+        const userExists = await prisma.user.findUnique({ where: { id } });
+    
+        if (!userExists) {
+            throw new Error("User not found");
+        }
+    
+        if (data.email && data.email !== userExists.email) {
+            const emailExists = await prisma.user.findUnique({
+                where: { email: data.email },
+            });
+            if (emailExists) {
+                throw new Error("O email já está em uso.");
+            }
+        }
+    
+        return await prisma.user.update({
+            where: { id },
+            data,
+        });
+    }
+    
+
     async findUserByEmail(email: string) {
         return await prisma.user.findUnique({ where: { email } });
     }

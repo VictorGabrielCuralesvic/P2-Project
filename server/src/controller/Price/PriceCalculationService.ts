@@ -15,7 +15,7 @@ export class PriceCalculationService {
 
         return await prisma.priceCalculation.findMany({
             where: { userId: parsedUserId },
-            include: { ingredients: true },
+            select: { suggestedPrice: true },
         });
     }
 

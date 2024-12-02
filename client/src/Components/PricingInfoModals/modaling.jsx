@@ -1,21 +1,12 @@
-import { useState, useEffect } from 'react';
+import React from 'react';
+import { useIngredient } from '../../Hooks/useIngredient';
 
 const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
-    const [name, setName] = useState('');
-    const [quantity, setQuantity] = useState('');
-    const [price, setPrice] = useState('');
-    const [usedQuantity, setUsedQuantity] = useState('');
+    const {
+        name, setName, quantity, setQuantity, price, setPrice, usedQuantity, setUsedQuantity
+    } = useIngredient(ingredientToEdit);
 
-    useEffect(() => {
-        if (ingredientToEdit) {
-            setName(ingredientToEdit.name);
-            setQuantity(ingredientToEdit.quantity);
-            setPrice(ingredientToEdit.price);
-            setUsedQuantity(ingredientToEdit.usedQuantity);
-        }
-    }, [ingredientToEdit]);
-
-    const handleSave = () => {
+    const handleSave = (onAddIngredient) => {
         onAddIngredient({
             name,
             quantity: parseFloat(quantity),
@@ -23,7 +14,7 @@ const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
             usedQuantity: parseFloat(usedQuantity)
         });
     };
-
+    
     return (
         <div className="t9-1-back">
             <div className='t9-1-modal'>
@@ -63,7 +54,7 @@ const ModalIng = ({ onAddIngredient, onClose, ingredientToEdit }) => {
                     />
                     <div className='t9-1-button-box'>
                         <button onClick={onClose} className='t9-1-cancel'>Cancelar</button>
-                        <button onClick={handleSave} className='t9-1-save'>Salvar</button>
+                        <button onClick={() => handleSave(onAddIngredient)} className='t9-1-save'>Salvar</button>
                     </div>
                 </div>
             </div>

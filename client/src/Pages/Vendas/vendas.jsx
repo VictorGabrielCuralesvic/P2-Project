@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import './vendas.css';
 import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
-import axios from "axios";
+import { fetchProducts, fetchTotalRevenueByDate, registerSale } from '../../Services/Api';
 import Header from "../../Components/Header/Header";
 
 const Vendas = () => {
@@ -12,56 +12,27 @@ const Vendas = () => {
     const [selectedDate, setSelectedDate] = useState(new Date().toISOString().split('T')[0]);
 
     useEffect(() => {
-        const fetchProducts = async () => {
+        const token = localStorage.getItem('token');
+
+        const fetchInitialData = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/products', {
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-                setProducts(response.data);
+                const productsResponse = await fetchProducts(token);
+                setProducts(productsResponse.data);
+
+                const revenueResponse = await fetchTotalRevenueByDate(selectedDate, token);
+                setTotalRevenue(revenueResponse.data.totalRevenue);
             } catch (error) {
-                console.error('Error fetching products:', error);
-                alert('Failed to fetch products.');
+                console.error('Error fetching data:', error);
+                alert('Failed to fetch data.');
             }
         };
 
-        const fetchTotalRevenueByDate = async () => {
-            try {
-                const response = await axios.get(`http://localhost:5000/total-revenue-by-date`, {
-                    params: { date: selectedDate },
-                    headers: {
-                        Authorization: `Bearer ${localStorage.getItem('token')}`
-                    }
-                });
-                setTotalRevenue(response.data.totalRevenue);
-            } catch (error) {
-                console.error('Error fetching total revenue:', error);
-                alert('Failed to fetch total revenue.');
-            }
-        };
-
-        fetchProducts();
-        fetchTotalRevenueByDate();
+        fetchInitialData();
     }, [selectedDate]);
-
-    /* const handleIncrease = (index) => {
-        const newProducts = [...products];
-        newProducts[index].quantity += 1;
-        setProducts(newProducts);
-    };
-
-    const handleDecrease = (index) => {
-        const newProducts = [...products];
-        if (newProducts[index].quantity > 0) {
-            newProducts[index].quantity -= 1;
-        }
-        setProducts(newProducts);
-    }; */
 
     const handleQuantityChange = (index, newQuantity) => {
         const newProducts = [...products];
-        newProducts[index].quantity = newQuantity >= 0 ? newQuantity : 0;
+        newProducts[index].quantity = Math.max(newQuantity, 0); // Impede que a quantidade fique negativa
         setProducts(newProducts);
     };
 
@@ -73,15 +44,8 @@ const Vendas = () => {
             date: new Date().toISOString()
         };
 
-        console.log("Dados", saleData);
-
         try {
-            const response = await axios.post('http://localhost:5000/register-sale', saleData, {
-                headers: {
-                    'Content-Type': 'application/json',
-                    Authorization: `Bearer ${localStorage.getItem('token')}`
-                }
-            });
+            const response = await registerSale(saleData, localStorage.getItem('token'));
             if (response.status === 201) {
                 alert('Sale registered successfully');
                 setTotalRevenue(prevTotal => prevTotal + (product.suggestedPrice * product.quantity));
@@ -131,18 +95,16 @@ const Vendas = () => {
                     />
                 </div>
                 <div className="t13-vendas">
-                    {Array.isArray(products) && products.length > 0 ? (
+                    {products.length > 0 ? (
                         products.map((product, index) => (
                             <div key={index} className="t13-sales-item">
                                 <p>{product.productName}</p>
                                 <p>Quantidade: {product.quantity}</p>
                                 <div className="t13-quantity-control">
-                                    {/* <button onClick={() => handleDecrease(index)}>-</button>
-                                    <button onClick={() => handleIncrease(index)}>+</button> */}
                                     <input 
                                         type="number"
                                         value={product.quantity}
-                                        onChange={(e) => handleQuantityChange(index, parseInt(e.target.value, 10))}
+                                        onChange={(e) => handleQuantityChange(index, parseInt(e.target.value, 10) || 0)} // Garante que seja um número
                                         min="0"
                                         className="t13-input-quantity"
                                     />

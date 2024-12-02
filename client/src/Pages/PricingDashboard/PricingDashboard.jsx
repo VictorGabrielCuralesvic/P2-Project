@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import './PricingDashboard.css';
-import PricingModal from './PricingModal/PricingModal.jsx';
-import axios from 'axios';
+import PricingModal from '../../Components/PricingModal/PricingModal.jsx';
+import { getProducts } from '../../Services/Api.js'; 
 import { useNavigate } from 'react-router-dom';
+import BottomNavigation from '../../Components/BottomNavigation/BottomNavigation';
 import Header from '../../Components/Header/Header.jsx';
 import { FaPlus } from 'react-icons/fa';
 
@@ -15,11 +16,7 @@ const PricingDashboard = () => {
         const fetchProducts = async () => {
             const token = localStorage.getItem('token');
             try {
-                const response = await axios.get('http://localhost:5000/products', {
-                    headers: {
-                        Authorization: `Bearer ${token}`
-                    }
-                });
+                const response = await getProducts(token);  // Usando a função da API
                 setProducts(response.data);
             } catch (error) {
                 console.error(error);
@@ -58,6 +55,7 @@ const PricingDashboard = () => {
                 </div>
                 {isModalOpen && <PricingModal onAddProduct={handleAddProduct} onClose={() => setIsModalOpen(false)} />}
             </div>
+            <BottomNavigation/>
         </div>
     );
 };

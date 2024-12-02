@@ -3,13 +3,14 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginScreen from './Pages/Login/LoginScreen';
 import RegisterScreen from './Pages/Register/RegisterScreen';
 import ResetPasswordScreen from './Pages/ResetPass/ResetPasswordScreen';
-import ProfileEdit from './Pages/ProfileEdit/ProfileEdit';
+import ProfileEdit from './Pages/UserProfileEdit/ProfileEdit';
 import UserProfile from './Pages/UserProfile/UserProfile';
 import Dashboard from './Pages/Dashboard/Dashboard';
 import PricingDashboard from './Pages/PricingDashboard/PricingDashboard';
 import PricingInfo from './Pages/PricingInfo/PricingInfo';
 import Vendas from './Pages/Vendas/vendas';
 import BillsRegister from './Pages/RegisterBills/BillsRegister';
+import Dicas from './Pages/Dicas/Dicas'
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
         <Route path="/PricingDashboard" element={<PricingDashboard/>} />
         <Route path="/PricingInfo" element={<PricingInfo/>} />
         <Route path="/vendas" element={<Vendas />} />
+        <Route path="/dicas" element={<Dicas/>}/>
       </Routes>
     </Router>
   );

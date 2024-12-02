@@ -13,7 +13,7 @@ const BottomNavigation = () => {
         <FaHome onClick={() => navigate('/Dashboard')}/>
       </div>
       <div className="nav-item">
-        <FaMagnifyingGlassChart />
+        <FaMagnifyingGlassChart onClick={() => navigate('/dicas')} />
       </div>
       <div className="nav-item">
         <FaUser  onClick={() => navigate('/UserProfile')}/>

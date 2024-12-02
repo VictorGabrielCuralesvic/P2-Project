@@ -1,11 +1,11 @@
-import { useState } from 'react';
+import React from 'react';
 import './PricingModal.css';
-import axios from 'axios';
+import { useProduct } from '../../Hooks/useProduct';
 
 const PricingModal = ({ onAddProduct, onClose }) => {
-    const [productName, setProductName] = useState('');
+    const { productName, setProductName } = useProduct();
 
-    const handleSave = async () => {
+    const handleSave = (onAddProduct) => {
         const newProduct = { productName, suggestedPrice: null };
         onAddProduct(newProduct);
     };
@@ -23,7 +23,7 @@ const PricingModal = ({ onAddProduct, onClose }) => {
                 />
                 <div className='t7-1-button-box'>
                     <button className='t7-1-cancel' onClick={onClose}>Cancelar</button>
-                    <button className='t7-1-save' onClick={handleSave}>Salvar</button>
+                    <button className='t7-1-save' onClick={() => handleSave(onAddProduct)}>Salvar</button>
                 </div>
                 
                 
